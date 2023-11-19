@@ -13,10 +13,25 @@
         android:theme="@style/Theme.SnapLearn"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.Write"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".view.Practice"
+            android:exported="false" />
+        <activity
+            android:name=".view.FlashCard"
+            android:exported="false" />
+        <activity
+            android:name=".view.Set"
+            android:exported="false" />
+        <activity
+            android:name=".view.CreateSet"
+            android:exported="false" />
+        <activity
+            android:name=".view.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

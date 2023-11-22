@@ -5,5 +5,88 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.CreateSet">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <include layout="@layout/create_set_toolbar"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textSize="25sp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#3B82F6"/>
 
+        <EditText
+            android:id="@+id/editText_nameSet"
+            android:layout_width="390sp"
+            android:layout_height="48dp"
+            android:hint="Name"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textSize="25sp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#3B82F6"/>
+        <EditText
+            android:id="@+id/editText_description"
+            android:layout_width="390sp"
+            android:layout_height="48dp"
+            android:hint="Description"
+            android:layout_marginLeft="10dp"/>
+        <Button
+            android:id="@+id/btn_create_set"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:text="Create Set"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Term"
+            android:textSize="25sp"
+            android:layout_marginLeft="20dp"
+            android:textColor="#3B82F6"/>
+
+        <EditText
+            android:id="@+id/editText_term"
+            android:layout_width="390sp"
+            android:layout_height="48dp"
+            android:hint="Term"
+            android:layout_marginLeft="20dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Definition"
+            android:textSize="25sp"
+            android:layout_marginLeft="20dp"
+            android:textColor="#3B82F6"/>
+        <EditText
+            android:id="@+id/editText_definition"
+            android:layout_width="390sp"
+            android:layout_height="48dp"
+            android:hint="Definition"
+            android:layout_marginLeft="20dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_add_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976"
+        app:srcCompat="@drawable/baseline_add_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>

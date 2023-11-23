@@ -1,9 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".view.FlashCard">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#3B82F6"
+        android:gravity="center_vertical">
+
+        <Button
+            android:layout_width="231dp"
+            android:layout_height="62dp"
+            android:layout_marginLeft="20dp"
+            android:background="#3B82F6"
+            android:drawableStart="@drawable/baseline_chevron_left_24"
+            android:fontFamily="sans-serif-black"
+            android:paddingHorizontal="20dp"
+            android:text="flashcards"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="25dp"></Button>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:background="@color/white"
+        android:gravity="center">
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="450dp"
+            android:layout_margin="50dp"
+            android:background="@drawable/custom_flash_card_background"
+            android:textSize="25dp"
+            android:textColor="@color/white"
+            android:text="flashcard"
+            android:gravity="center"
+            android:fontFamily="sans-serif-black">
+        </TextView>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        >
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="#3B82F6"
+            android:background="@color/white"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="30dp"
+            android:text="Tap to flip it"></Button>
+    </LinearLayout>
+</LinearLayout>

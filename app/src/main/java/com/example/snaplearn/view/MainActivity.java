@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.snaplearn.R;
@@ -23,8 +24,11 @@ import com.example.snaplearn.model.Set;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
@@ -52,14 +56,25 @@ public class MainActivity extends AppCompatActivity {
         binding.btnAddSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Set newData = new Set();
-//                newData.setID("1");
-//                newData.setName("Test1");
-//                newData.setDescription("Just a test");
-//
-//                myRef.push().setValue(newData);
-                Intent intent = new Intent(MainActivity.this,CreateSet.class);
-                startActivity(intent);
+                Set newData = new Set();
+                newData.setID("1");
+                newData.setName("English");
+                newData.setDescription("Just a English");
+
+                myRef.push().setValue(newData);
+//                Intent intent = new Intent(MainActivity.this,CreateSet.class);
+//                startActivity(intent);
+            }
+        });
+        binding.mainSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
             }
         });
     }
@@ -71,19 +86,19 @@ public class MainActivity extends AppCompatActivity {
                 new FirebaseRecyclerOptions.Builder<Set>()
                         .setQuery(myRef, Set.class)
                         .build();
-        FirebaseRecyclerAdapter<Set, PostHolder> adapter = new FirebaseRecyclerAdapter<Set, PostHolder>(options) {
+        FirebaseRecyclerAdapter<Set, SetHolder> adapter = new FirebaseRecyclerAdapter<Set, SetHolder>(options) {
 
             @Override
-            public PostHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            public SetHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
                 View view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.set_item, parent, false);
 
-                return new PostHolder(view);
+                return new SetHolder(view);
             }
 
             @Override
-            protected void onBindViewHolder(PostHolder holder, int position, Set model) {
+            protected void onBindViewHolder(SetHolder holder, int position, Set model) {
                 holder.edtSet.setText("set" + count);
                 holder.edtName.setText(model.getName());
                 holder.edtDec.setText(model.getDescription());
@@ -92,11 +107,11 @@ public class MainActivity extends AppCompatActivity {
         binding.rvSet.setAdapter(adapter);
         adapter.startListening();
     }
-    public static class PostHolder extends RecyclerView.ViewHolder {
+    public static class SetHolder extends RecyclerView.ViewHolder {
         private EditText edtSet;
         private EditText edtName;
         private EditText edtDec;
-        public PostHolder(View view) {
+        public SetHolder(View view) {
             super(view);
             edtSet = view.findViewById(R.id.edt_setname);
             edtName = view.findViewById(R.id.edt_name);
@@ -110,5 +125,20 @@ public class MainActivity extends AppCompatActivity {
     public static int counting(){
         count++;
         return count;
+    }
+    private void search(final String querry){
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot snapshot1 : snapshot.getChildren()){
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

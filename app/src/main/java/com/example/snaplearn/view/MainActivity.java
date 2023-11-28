@@ -49,19 +49,13 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference().child("posts");
+        myRef = database.getReference().child("sets");
 
         firestore = FirebaseFirestore.getInstance();
         binding.rvSet.setLayoutManager(new LinearLayoutManager(this));
         binding.btnAddSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Set newData = new Set();
-//                newData.setID("1");
-//                newData.setName("English");
-//                newData.setDescription("Just a English");
-//
-//                myRef.push().setValue(newData);
                 Intent intent = new Intent(MainActivity.this,CreateSet.class);
                 startActivity(intent);
             }
@@ -99,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(SetHolder holder, int position, Set model) {
-                holder.edtSet.setText("set" + count);
+                holder.edtSet.setText("Set: " + count++);
                 holder.edtName.setText(model.getName());
                 holder.edtDec.setText(model.getDescription());
             }

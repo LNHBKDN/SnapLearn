@@ -33,6 +33,8 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.UUID;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -43,18 +45,16 @@ public class CreateSet extends AppCompatActivity {
     private ActivityCreateSetBinding binding;
     private FirebaseAuth mAuth;
     private FirebaseDatabase database;
-    private DatabaseReference myRef;
+    private DatabaseReference setsReference;
     private EditText editText_nameSet;
     private EditText editText_description;
     private Button btn_create_set;
     private String IdSet;
     private ArrayList<FlashCard> cardList;
-//    private ContactsAdapter contactsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_create_set);
         binding = ActivityCreateSetBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -62,7 +62,8 @@ public class CreateSet extends AppCompatActivity {
         binding.btnCreateSet.setVisibility(View.VISIBLE);
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("posts");
+        setsReference = database.getReference("sets");
+        //flashCardsReference = database.getReference("flashcard");
         IdSet = "";
         binding.btnCreateSet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,13 +82,14 @@ public class CreateSet extends AppCompatActivity {
                 addCard(term, definition);
             }
         });
-//        ActionBar actionBar = getSupportActionBar();
-//        actionBar.setDisplayHomeAsUpEnabled(true);
     }
     public void addSet(String Name,String Description){
-        String ID= myRef.push().getKey();
+        String setId = setsReference.push().getKey();
+        IdSet = setId;
         ArrayList<FlashCard> listFlashCard = new ArrayList<FlashCard>();
-        myRef.child(ID).setValue(new Set(ID, Name, Description, listFlashCard)).addOnCompleteListener(new OnCompleteListener<Void>(){
+        Set set = new Set(setId, Name, Description, listFlashCard);
+
+        setsReference.child(setId).setValue(set).addOnCompleteListener(new OnCompleteListener<Void>(){
             @Override
             public void onComplete(@NonNull Task<Void> task){
                 if(task.isSuccessful()){
@@ -95,7 +97,6 @@ public class CreateSet extends AppCompatActivity {
                     binding.btnCreateSet.setVisibility(View.GONE);
                     binding.editTextNameSet.setEnabled(false);
                     binding.editTextDescription.setEnabled(false);
-                    IdSet = ID;
 
                 }else{
                     Log.d("DEBUG","Create set failed");
@@ -103,69 +104,62 @@ public class CreateSet extends AppCompatActivity {
             }
         });
     }
-    public void addCard(String term, String definition){
-        String ID= myRef.push().getKey();
-        myRef.child(ID).setValue(new FlashCard(ID, IdSet, term, definition)).addOnCompleteListener(new OnCompleteListener<Void>(){
+    public void addCard(String term, String definition) {
+        String setID = IdSet;
+        String cardId = setsReference.child(setID).child("listCard").push().getKey(); // Tạo cardID mới
+        FlashCard flashCard = new FlashCard(cardId, setID, term, definition);
+
+        // Lấy tham chiếu đến danh sách thẻ
+        DatabaseReference listCardRef = setsReference.child(setID).child("listCard");
+
+        // Thêm thẻ mới vào danh sách
+        listCardRef.child(cardId).setValue(flashCard).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
-            public void onComplete(@NonNull Task<Void> task){
-                if(task.isSuccessful()){
-                    Toast.makeText(CreateSet.this,"Add card successfully",Toast.LENGTH_SHORT).show();
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(CreateSet.this, "Add card successfully", Toast.LENGTH_SHORT).show();
                     binding.editTextTerm.setText("");
                     binding.editTextDefinition.setText("");
 
-                }else{
-                    Log.d("DEBUG","Add card failed");
+                } else {
+                    Log.d("DEBUG", "Add card failed");
                 }
             }
         });
     }
 
+
     @Override
     protected void onStart() {
         super.onStart();
-        Query query = myRef.orderByChild("IDSet").equalTo(IdSet);
-        FirebaseRecyclerOptions<FlashCard> options =
-                new FirebaseRecyclerOptions.Builder<FlashCard>()
-                        .setQuery(myRef, FlashCard.class)
-                        .build();
-        FirebaseRecyclerAdapter<FlashCard, CreateSet.FlashCardHolder> adapter = new FirebaseRecyclerAdapter<FlashCard, CreateSet.FlashCardHolder>(options) {
+                FirebaseRecyclerOptions<FlashCard> options =
+                        new FirebaseRecyclerOptions.Builder<FlashCard>()
+                                .setQuery(setsReference.child(IdSet).child("listCard"), FlashCard.class)
+                                .build();
 
-            @Override
-            public CreateSet.FlashCardHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                FirebaseRecyclerAdapter<FlashCard, FlashCardHolder> adapter =
+                        new FirebaseRecyclerAdapter<FlashCard, FlashCardHolder>(options) {
 
-                View view = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.term_definition_relativelayout, parent, false);
+                            @Override
+                            public FlashCardHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                                View view = LayoutInflater.from(parent.getContext())
+                                        .inflate(R.layout.term_definition_relativelayout, parent, false);
 
-                return new CreateSet.FlashCardHolder(view);
-            }
+                                return new FlashCardHolder(view);
+                            }
 
-            @Override
-            protected void onBindViewHolder(CreateSet.FlashCardHolder holder, int position, FlashCard model) {
-                holder.edtTerm.setText(model.getTerm());
-                holder.edtDefinition.setText(model.getDefinition());
-            }
-        };
-        binding.rvCards.setAdapter(adapter);
-        adapter.startListening();
-        // Listener for changes in the dataset for the specific ID
-        ValueEventListener valueEventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Clear the adapter's current data
-                adapter.notifyDataSetChanged();
-                // Update adapter with the new data
+                            @Override
+                            protected void onBindViewHolder(FlashCardHolder holder, int position, FlashCard model) {
+                                holder.edtTerm.setText(model.getTerm());
+                                holder.edtDefinition.setText(model.getDefinition());
+                            }
+                        };
+
+                binding.rvCards.setAdapter(adapter);
                 adapter.startListening();
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Handle potential errors here
-            }
-        };
-
-        // Add the listener to the reference
-        myRef.addValueEventListener(valueEventListener);
     }
+
     public static class FlashCardHolder extends RecyclerView.ViewHolder {
         private EditText edtTerm;
         private EditText edtDefinition;

@@ -57,6 +57,7 @@ public class CreateSet extends AppCompatActivity {
     private EditText editText_description;
     private Button btn_create_set;
     private String IdSet;
+    private String uid;
     private ArrayList<FlashCard> cardList;
     private DatabaseReference listCardRef;
 
@@ -66,11 +67,13 @@ public class CreateSet extends AppCompatActivity {
         binding = ActivityCreateSetBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        Intent getIntent = getIntent();
+        uid = getIntent.getStringExtra("UID");
         binding.rvCards.setLayoutManager(new LinearLayoutManager(this));
         binding.btnCreateSet.setVisibility(View.VISIBLE);
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-        setsReference = database.getReference("sets");
+        setsReference = database.getReference("users").child(uid).child("sets");
 
         IdSet = "";
         binding.btnCreateSet.setOnClickListener(new View.OnClickListener() {
@@ -88,12 +91,6 @@ public class CreateSet extends AppCompatActivity {
                 String term = binding.editTextTerm.getText().toString();
                 String definition = binding.editTextDefinition.getText().toString();
                 addCard(term, definition);
-            }
-        });
-        binding.btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
             }
         });
     }

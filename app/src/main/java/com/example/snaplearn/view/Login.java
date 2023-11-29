@@ -26,6 +26,8 @@ public class Login extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        String uid = currentUser.getUid();
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,6 +39,7 @@ public class Login extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
                                     Intent intent = new Intent(Login.this, MainActivity.class);
+                                    intent.putExtra("UID",uid);
                                     startActivity(intent);
                                 }else{
                                     Toast.makeText(Login.this,"Wrong username or password",Toast.LENGTH_SHORT).show();

@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_width="360dp"
+    android:layout_height="170dp"
     android:background="@drawable/flash_card"
-    android:paddingBottom="10dp"
+    android:layout_alignParentLeft="true"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="20dp"
+    android:padding="8dp"
+    android:outlineSpotShadowColor="@color/white"
     >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="5dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <EditText
-                android:id="@+id/edt_setname"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Set name"
-                android:textSize="15dp"></EditText>
-        </LinearLayout>
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:clipToOutline="true"
+        >
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,7 +27,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Name: "
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="#3B82F6"></TextView>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,7 +41,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Name"
-                android:textSize="15dp"></EditText>
+                android:textSize="20dp"
+                android:textColor="#E59462"></EditText>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,7 +52,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Decription: "
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="#3B82F6"></TextView>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -62,7 +65,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Description"
-                android:textSize="15dp"
+                android:textSize="20dp"
+                android:textColor="#E59462"
                 ></EditText>
         </LinearLayout>
     </LinearLayout>

@@ -39,7 +39,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/frame_15"
-    android:layout_width="380dp"
+    android:layout_width="360dp"
     android:layout_height="187dp"
     android:layout_alignParentLeft="true"
     android:layout_marginLeft="16dp"
@@ -63,7 +63,9 @@
                 android:layout_width="390sp"
                 android:layout_height="48dp"
                 android:hint="Term"
-                android:layout_marginLeft="10dp" />
+                android:layout_marginLeft="10dp"
+                android:enabled="false"
+                android:textColor="#E59462"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -77,6 +79,8 @@
                 android:layout_width="390sp"
                 android:layout_height="48dp"
                 android:hint="Definition"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:enabled="false"
+                android:textColor="#E59462"/>
         </LinearLayout>
 </RelativeLayout>

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -56,6 +57,7 @@ public class CreateSet extends AppCompatActivity {
     private EditText editText_description;
     private Button btn_create_set;
     private String IdSet;
+    private String uid;
     private ArrayList<FlashCard> cardList;
     private DatabaseReference listCardRef;
 
@@ -65,11 +67,13 @@ public class CreateSet extends AppCompatActivity {
         binding = ActivityCreateSetBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        Intent getIntent = getIntent();
+        uid = getIntent.getStringExtra("UID");
         binding.rvCards.setLayoutManager(new LinearLayoutManager(this));
         binding.btnCreateSet.setVisibility(View.VISIBLE);
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-        setsReference = database.getReference("sets");
+        setsReference = database.getReference("users").child(uid).child("sets");
 
         IdSet = "";
         binding.btnCreateSet.setOnClickListener(new View.OnClickListener() {

@@ -22,16 +22,16 @@
             android:name=".view.FlashCard"
             android:exported="false" />
         <activity
-            android:name=".view.Set"
+            android:name=".view.SetMethod"
             android:exported="false" />
         <activity
             android:name=".view.CreateSet"
             android:exported="false" />
         <activity
-            android:name=".view.Login"
+            android:name=".view.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".view.MainActivity"
+            android:name=".view.Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

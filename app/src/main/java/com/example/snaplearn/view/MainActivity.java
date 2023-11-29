@@ -38,8 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseFirestore firestore;
     private ActivityMainBinding binding;
     private SetItemBinding setItemBinding;
-    private static int count =0;
-
+    private String uid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,9 +46,11 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        Intent getIntent = getIntent();
+        uid = getIntent.getStringExtra("UID");
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference().child("sets");
+        myRef = database.getReference().child("users").child(uid).child("sets");
 
         firestore = FirebaseFirestore.getInstance();
         binding.rvSet.setLayoutManager(new LinearLayoutManager(this));
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,CreateSet.class);
+                intent.putExtra("UID",uid);
                 startActivity(intent);
             }
         });
@@ -68,11 +70,61 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                searchSets(newText);
                 return false;
             }
         });
     }
+    private void setupRV(FirebaseRecyclerOptions<Set> options){
+        FirebaseRecyclerAdapter<Set, SetHolder> adapter = new FirebaseRecyclerAdapter<Set, SetHolder>(options) {
+            @Override
+            public SetHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.set_item, parent, false);
+                return new SetHolder(view);
+            }
 
+            @Override
+            protected void onBindViewHolder(SetHolder holder, int position, Set model) {
+                holder.edtName.setText(model.getName());
+                holder.edtDec.setText(model.getDescription());
+                holder.itemView.setOnLongClickListener(new View.OnLongClickListener(){
+                    @Override
+                    public boolean onLongClick(View v){
+                        handleLongClick(model.getID());
+                        return true;
+                    }
+                });
+            }
+        };
+
+        binding.rvSet.setAdapter(adapter);
+        adapter.startListening();
+    }
+    private void handleLongClick(String idSet){
+        Intent intent = new Intent(MainActivity.this, SetMethod.class);
+        intent.putExtra("UID",uid);
+        intent.putExtra("idSet",idSet);
+        startActivity(intent);
+
+    }
+    private void searchSets(String query) {
+
+        FirebaseRecyclerOptions<Set> options;
+        if(query.isEmpty()){
+            options = new FirebaseRecyclerOptions.Builder<Set>()
+                    .setQuery(myRef,Set.class)
+                    .build();
+        }
+        else {
+            options =new FirebaseRecyclerOptions.Builder<Set>()
+                    .setQuery(myRef.orderByChild("name").startAt(query).endAt(query + "\uf8ff"), Set.class)
+                    .build();
+        }
+        setupRV(options);
+
+
+    }
     @Override
     protected void onStart() {
         super.onStart();
@@ -80,34 +132,13 @@ public class MainActivity extends AppCompatActivity {
                 new FirebaseRecyclerOptions.Builder<Set>()
                         .setQuery(myRef, Set.class)
                         .build();
-        FirebaseRecyclerAdapter<Set, SetHolder> adapter = new FirebaseRecyclerAdapter<Set, SetHolder>(options) {
-
-            @Override
-            public SetHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-                View view = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.set_item, parent, false);
-
-                return new SetHolder(view);
-            }
-
-            @Override
-            protected void onBindViewHolder(SetHolder holder, int position, Set model) {
-                holder.edtSet.setText("Set: " + count++);
-                holder.edtName.setText(model.getName());
-                holder.edtDec.setText(model.getDescription());
-            }
-        };
-        binding.rvSet.setAdapter(adapter);
-        adapter.startListening();
+        setupRV(options);
     }
     public static class SetHolder extends RecyclerView.ViewHolder {
-        private EditText edtSet;
         private EditText edtName;
         private EditText edtDec;
         public SetHolder(View view) {
             super(view);
-            edtSet = view.findViewById(R.id.edt_setname);
             edtName = view.findViewById(R.id.edt_name);
             edtDec = view.findViewById(R.id.edt_descrip);
         }
@@ -116,23 +147,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         return super.onOptionsItemSelected(item);
     }
-    public static int counting(){
-        count++;
-        return count;
-    }
-    private void search(final String querry){
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot snapshot1 : snapshot.getChildren()){
 
-                }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
 }

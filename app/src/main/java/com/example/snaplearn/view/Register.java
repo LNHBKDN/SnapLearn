@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.snaplearn.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Register extends AppCompatActivity {
 
@@ -19,6 +20,17 @@ public class Register extends AppCompatActivity {
     TextInputEditText editTextPassword;
     Button buttonReg;
     FirebaseAuth mAuth;
+
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        if(currentUser != null){
+//            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//            startActivity(intent);
+//            finish();
+//        }
+//    }
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
@@ -35,19 +47,21 @@ public class Register extends AppCompatActivity {
             password = String.valueOf(editTextPassword.getText());
 
             if (TextUtils.isEmpty(email)) {
-                Toast.makeText(Register.this, "Plz Enter Email?", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(Register.this, "Plz Enter Email?", Toast.LENGTH_SHORT).show();
+                editTextEmail.setError("You must fill the email field or imma kick ur ass");
                 return;
             }
             if (TextUtils.isEmpty(password)) {
-                Toast.makeText(Register.this, "Plz Enter Password?", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Register.this, "Plz Enter Password?", Toast.LENGTH_SHORT).show();
+                editTextPassword.setError("You must fill the email field or imma kick ur ass");
                 return;
             }
+
 
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            Toast.makeText(Register.this, "You have registered",
-                                    Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Register.this, "You have registered", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(Register.this, Login.class);
                             startActivity(intent);
                         } else {

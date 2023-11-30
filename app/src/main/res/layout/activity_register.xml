@@ -7,8 +7,7 @@
     android:layout_gravity="center"
     android:orientation="vertical"
     android:padding="15dp"
-    tools:context=".view.Register"
-    >
+    tools:context=".view.Register">
 
     <TextView
         android:id="@+id/reg"
@@ -29,7 +28,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/username"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+            android:lines="1"
+            tools:ignore="TouchTargetSizeCheck"
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -42,19 +44,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/email"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:inputType="textEmailAddress"
+            tools:ignore="TouchTargetSizeCheck"
+            android:lines="1"
+            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:counterEnabled="true"
+        app:counterMaxLength="16"
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
             android:hint="@string/password"
+            android:inputType="textPassword"
+            android:lines="1"
             tools:ignore="TouchTargetSizeCheck" />
 
 
@@ -64,21 +75,33 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:counterEnabled="true"
+        app:counterMaxLength="16"
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/repassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
             android:hint="Confirm the password"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:inputType="textPassword"
+            tools:ignore="TouchTargetSizeCheck"
+            android:lines="1"
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btn_register"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/register" />
+        android:backgroundTint="#3B82F6"
+        android:outlineAmbientShadowColor="@color/white"
+        android:text="@string/register"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold" />
 </LinearLayout>

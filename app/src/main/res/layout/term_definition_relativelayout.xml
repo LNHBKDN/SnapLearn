@@ -1,41 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent">-->
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:orientation="vertical">-->
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Term"-->
-<!--            android:textSize="25sp"-->
-<!--            android:layout_marginLeft="10dp"-->
-<!--            android:textColor="#3B82F6"/>-->
-
-<!--        <EditText-->
-<!--            android:id="@+id/editText_nameSet"-->
-<!--            android:layout_width="390sp"-->
-<!--            android:layout_height="48dp"-->
-<!--            android:hint="Term"-->
-<!--            android:layout_marginLeft="10dp" />-->
-
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Definition"-->
-<!--            android:textSize="25sp"-->
-<!--            android:layout_marginLeft="10dp"-->
-<!--            android:textColor="#3B82F6"/>-->
-<!--        <EditText-->
-<!--            android:id="@+id/editText_description"-->
-<!--            android:layout_width="390sp"-->
-<!--            android:layout_height="48dp"-->
-<!--            android:hint="Definition"-->
-<!--            android:layout_marginLeft="10dp"/>-->
-<!--    </LinearLayout>-->
-<!--</RelativeLayout>-->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/frame_15"

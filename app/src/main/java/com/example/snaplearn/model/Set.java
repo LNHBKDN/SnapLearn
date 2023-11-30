@@ -50,4 +50,5 @@ public class Set {
     public void setListFlashCard(ArrayList<FlashCard> listFlashCard) {
         ListFlashCard = listFlashCard;
     }
+
 }

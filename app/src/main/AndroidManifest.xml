@@ -15,6 +15,11 @@
         android:theme="@style/Theme.SnapLearn"
         tools:targetApi="31">
         <activity
+            android:name=".view.UpdateCard"
+            android:exported="false"
+            android:label="@string/title_activity_update_card"
+            android:theme="@style/Theme.SnapLearn" />
+        <activity
             android:name=".view.Write"
             android:exported="false" />
         <activity
@@ -24,7 +29,7 @@
             android:name=".view.FlashCard"
             android:exported="false" />
         <activity
-            android:name=".view.Set"
+            android:name=".view.SetMethod"
             android:exported="false" />
         <activity
             android:name=".view.CreateSet"

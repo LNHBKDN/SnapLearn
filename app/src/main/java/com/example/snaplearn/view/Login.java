@@ -64,6 +64,7 @@ public class Login extends AppCompatActivity {
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//<<<<<<< Quan
             String email, password;
             email = String.valueOf(editTextEmail.getText());
             password = String.valueOf(editTextPassword.getText());
@@ -79,10 +80,16 @@ public class Login extends AppCompatActivity {
                 return;
             }
                 mAuth.signInWithEmailAndPassword(email, password)
+=======
+                String username = binding.edtUsername.getText().toString();
+                String password = binding.edtPassword.getText().toString();
+                mAuth.signInWithEmailAndPassword(username, password)
+//>>>>>>> master
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
+//<<<<<<< Quan
                                     Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(intent);
@@ -95,6 +102,60 @@ public class Login extends AppCompatActivity {
                         });
             }
         });
+//=======
+                                    // Move the UID retrieval here after successful login
+                                    FirebaseUser currentUser = mAuth.getCurrentUser();
+                                    if (currentUser != null) {
+                                        String uid = currentUser.getUid();
+                                        Intent intent = new Intent(Login.this, MainActivity.class);
+                                        intent.putExtra("UID", uid);
+                                        startActivity(intent);
+                                    } else {
+                                        // Handle the case where the user is unexpectedly null
+                                        Toast.makeText(Login.this, "User is null", Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+                                    Toast.makeText(Login.this, "Wrong username or password", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+            }
+        });
+    }
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+//        setContentView(binding.getRoot());
+//
+//        mAuth = FirebaseAuth.getInstance();
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+////        String uid = currentUser.getUid();
+//
+//        String uid = "9MkPhphsNDS9m7tawSRfk78qNq82";
+//        binding.btnLogin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String username = binding.edtUsername.getText().toString();
+//                String password = binding.edtPassword.getText().toString();
+//                mAuth.signInWithEmailAndPassword(username,password)
+//                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<AuthResult> task) {
+//                                if(task.isSuccessful()){
+//                                    Intent intent = new Intent(Login.this, MainActivity.class);
+//                                    intent.putExtra("UID",uid);
+//                                    startActivity(intent);
+//                                }else{
+//                                    Toast.makeText(Login.this,"Wrong username or password",Toast.LENGTH_SHORT).show();
+//                                }
+//                            }
+//                        });
+//            }
+//        });
+//    }
+
+//>//>>>>>> master
 
     }
 }

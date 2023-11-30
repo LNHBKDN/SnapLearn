@@ -29,6 +29,7 @@
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+//<<<<<<< Quan
             android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
@@ -43,6 +44,17 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password"
+//=======
+            android:backgroundTint="#3B82F6"
+            android:padding="10dp"
+            android:text="LOGIN"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:background="@drawable/button_background"
+            />
+        <LinearLayout
+//>>>>>>> master
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/common_google_signin_btn_icon_light_normal_background"

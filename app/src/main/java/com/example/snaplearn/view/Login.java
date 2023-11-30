@@ -26,8 +26,6 @@ public class Login extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         mAuth = FirebaseAuth.getInstance();
-        binding.edtUsername.setText("test01@gmail.com");
-        binding.edtPassword.setText("123456");
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,5 +87,6 @@ public class Login extends AppCompatActivity {
 //            }
 //        });
 //    }
+
 
 }

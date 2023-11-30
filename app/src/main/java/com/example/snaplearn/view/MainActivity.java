@@ -2,6 +2,7 @@ package com.example.snaplearn.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,8 +22,12 @@ import com.example.snaplearn.R;
 import com.example.snaplearn.databinding.ActivityMainBinding;
 import com.example.snaplearn.databinding.SetItemBinding;
 import com.example.snaplearn.model.Set;
+import com.example.snaplearn.viewmodel.ItemTouchHelperListener;
+import com.example.snaplearn.viewmodel.RecylerViewItemTouchHelper;
+import com.example.snaplearn.viewmodel.SetAdapter;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,13 +36,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SetAdapter.SetClickListener, ItemTouchHelperListener {
     private FirebaseAuth mAuth;
     private FirebaseDatabase database ;
     private DatabaseReference myRef;
     private FirebaseFirestore firestore;
     private ActivityMainBinding binding;
     private SetItemBinding setItemBinding;
+    private SetAdapter adapter;
     private String uid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,40 +80,17 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+        ItemTouchHelper.SimpleCallback simpleCallback = new RecylerViewItemTouchHelper(0,ItemTouchHelper.LEFT,this);
+        new ItemTouchHelper(simpleCallback).attachToRecyclerView(binding.rvSet);
     }
     private void setupRV(FirebaseRecyclerOptions<Set> options){
-        FirebaseRecyclerAdapter<Set, SetHolder> adapter = new FirebaseRecyclerAdapter<Set, SetHolder>(options) {
-            @Override
-            public SetHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.set_item, parent, false);
-                return new SetHolder(view);
-            }
-
-            @Override
-            protected void onBindViewHolder(SetHolder holder, int position, Set model) {
-                holder.edtName.setText(model.getName());
-                holder.edtDec.setText(model.getDescription());
-                holder.itemView.setOnLongClickListener(new View.OnLongClickListener(){
-                    @Override
-                    public boolean onLongClick(View v){
-                        handleLongClick(model.getID());
-                        return true;
-                    }
-                });
-            }
-        };
+        adapter = new SetAdapter(options, this);
 
         binding.rvSet.setAdapter(adapter);
         adapter.startListening();
-    }
-    private void handleLongClick(String idSet){
-        Intent intent = new Intent(MainActivity.this, SetMethod.class);
-        intent.putExtra("UID",uid);
-        intent.putExtra("idSet",idSet);
-        startActivity(intent);
 
     }
+
     private void searchSets(String query) {
 
         FirebaseRecyclerOptions<Set> options;
@@ -134,19 +117,39 @@ public class MainActivity extends AppCompatActivity {
                         .build();
         setupRV(options);
     }
-    public static class SetHolder extends RecyclerView.ViewHolder {
-        private EditText edtName;
-        private EditText edtDec;
-        public SetHolder(View view) {
-            super(view);
-            edtName = view.findViewById(R.id.edt_name);
-            edtDec = view.findViewById(R.id.edt_descrip);
-        }
-    }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         return super.onOptionsItemSelected(item);
     }
 
 
+    @Override
+    public void onSetLongClick(String idSet) {
+        Intent intent = new Intent(MainActivity.this, SetMethod.class);
+        intent.putExtra("UID", uid);
+        intent.putExtra("idSet", idSet);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onSwiped(RecyclerView.ViewHolder viewHolder) {
+        if(viewHolder instanceof SetAdapter.SetHolder) {
+            if (viewHolder instanceof SetAdapter.SetHolder) {
+                int position = viewHolder.getAdapterPosition();
+
+                Set deletedSet = adapter.getItem(position);
+
+                adapter.removeItem(position);
+
+                Snackbar.make(binding.getRoot(), "Set deleted", Snackbar.LENGTH_LONG)
+                        .setAction("UNDO", v -> {
+                            // Undo the deletion
+                            adapter.undoDeleteItem(position, deletedSet);
+                        })
+                        .setActionTextColor(Color.YELLOW)
+                        .show();
+            }
+        }
+    }
 }

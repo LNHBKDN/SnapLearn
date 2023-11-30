@@ -19,11 +19,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
     public CardAdapter(List<FlashCard> cardList) {
         this.cardList = cardList;
     }
-    // ViewHolder để giữ các thành phần giao diện của mỗi item
     public static class CardViewHolder extends RecyclerView.ViewHolder {
         private EditText edtTerm;
         private EditText edtDefinition;
-        // Các thành phần giao diện khác của card
 
         public CardViewHolder(View itemView) {
             super(itemView);
@@ -40,11 +38,10 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull CardAdapter.CardViewHolder holder, int position) {
-        // Gắn dữ liệu từ danh sách card vào ViewHolder
         FlashCard card = cardList.get(position);
         holder.edtTerm.setText(card.getTerm());
         holder.edtDefinition.setText(card.getDefinition());
-        // Gắn các thông tin khác của card vào các thành phần giao diện tương ứng
+
     }
 
     @Override

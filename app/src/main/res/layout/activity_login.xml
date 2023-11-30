@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.Login"
+    android:orientation="vertical"
     android:padding="10dp"
-    android:orientation="vertical">
+    tools:context=".view.Login">
 
     <TextView
         android:id="@+id/welcome_bac"
@@ -22,93 +22,102 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="40dp"></LinearLayout>
     </LinearLayout>
-        <LinearLayout
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:gravity="top"
-                android:text="Username:"
-                android:textSize="25dp" />
-            <EditText
-                android:id="@+id/edt_username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:paddingStart="8dp"
-                android:background="@drawable/rectangle_2"
-                ></EditText>
-        </LinearLayout>
-        <LinearLayout
+            android:layout_marginTop="4dp"
+            android:gravity="top"
+            android:text="Username:"
+            android:textSize="25dp" />
+
+        <EditText
+            android:id="@+id/edt_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-            <TextView
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:gravity="top"
-                android:text="Password:"
-                android:textSize="25dp" />
-            <EditText
-                android:id="@+id/edt_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:paddingStart="8dp"
-                android:inputType="textPassword"
-                android:background="@drawable/rectangle_2"></EditText>
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rectangle_2"
+            android:paddingStart="8dp"></EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="top"
+            android:text="Password:"
+            android:textSize="25dp" />
+
+        <EditText
+            android:id="@+id/edt_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rectangle_2"
+            android:inputType="textPassword"
+            android:paddingStart="8dp"></EditText>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="10dp"></LinearLayout>
-        </LinearLayout>
+    </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_login"
-            android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#3B82F6"
+        android:padding="10dp"
+
+        android:text="LOGIN"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#3B82F6"
-            android:padding="10dp"
-            android:text="LOGIN"
-            android:textColor="@color/white"
+            android:text="Don't have an account?"
+            android:textSize="25dp"></TextView>
+
+        <TextView
+            android:id="@+id/btn_reg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:onClick="register"
+            android:text="Register"
+            android:textColor="#1A1A1A"
             android:textSize="25dp"
-            android:textStyle="bold" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Don't have an account?"
-                android:textSize="25dp"
-                ></TextView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Register"
-                android:textColor="#1A1A1A"
-                android:textStyle="bold"
-                android:onClick="Register"
-                android:textSize="25dp"
-                ></TextView>
-        </LinearLayout>
+            android:textStyle="bold"></TextView>
+    </LinearLayout>
 </LinearLayout>
 
 

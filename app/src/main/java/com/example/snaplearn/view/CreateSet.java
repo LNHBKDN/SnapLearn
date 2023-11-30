@@ -76,6 +76,10 @@ public class CreateSet extends AppCompatActivity {
         setsReference = database.getReference("users").child(uid).child("sets");
 
         IdSet = "";
+        binding.rvCards.setVisibility(View.GONE);
+        binding.editTextTerm.setVisibility(View.GONE);
+        binding.editTextDefinition.setVisibility(View.GONE);
+        binding.btnAddCard.setVisibility(View.GONE);
         binding.btnCreateSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,6 +112,10 @@ public class CreateSet extends AppCompatActivity {
                     binding.btnCreateSet.setVisibility(View.GONE);
                     binding.editTextNameSet.setEnabled(false);
                     binding.editTextDescription.setEnabled(false);
+                    binding.rvCards.setVisibility(View.VISIBLE);
+                    binding.editTextTerm.setVisibility(View.VISIBLE);
+                    binding.editTextDefinition.setVisibility(View.VISIBLE);
+                    binding.btnAddCard.setVisibility(View.VISIBLE);
 
                 }else{
                     Log.d("DEBUG","Create set failed");

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.snaplearn.R;
 import com.example.snaplearn.databinding.ActivitySetBinding;
@@ -27,6 +28,15 @@ public class SetMethod extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SetMethod.this, UpdateCard.class);
+                intent.putExtra("UID",uid);
+                intent.putExtra("setID",setID);
+                startActivity(intent);
+            }
+        });
+        binding.btnFlashCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(SetMethod.this, FlashCard.class);
                 intent.putExtra("UID",uid);
                 intent.putExtra("setID",setID);
                 startActivity(intent);

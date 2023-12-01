@@ -7,58 +7,154 @@
     android:orientation="vertical"
     tools:context=".view.FlashCard">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="#3B82F6"
         android:gravity="center_vertical">
 
         <Button
-            android:layout_width="231dp"
-            android:layout_height="62dp"
-            android:layout_marginLeft="20dp"
-            android:background="#3B82F6"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="300dp"
+            android:background="@drawable/button_background"
             android:drawableStart="@drawable/baseline_chevron_left_24"
             android:fontFamily="sans-serif-black"
             android:paddingHorizontal="20dp"
-            android:text="flashcards"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="25dp"></Button>
+            android:textSize="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></Button>
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/txtNameSet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NAME"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="550dp"
         android:background="@color/white"
         android:gravity="center">
         <TextView
+            android:id="@+id/card_back"
             android:layout_width="300dp"
             android:layout_height="450dp"
             android:layout_margin="50dp"
-            android:background="@drawable/custom_flash_card_background"
-            android:textSize="25dp"
-            android:textColor="@color/white"
-            android:text="flashcard"
+            android:textAlignment="center"
+            android:background="@drawable/custom_back_card_background"
+            android:fontFamily="sans-serif-black"
             android:gravity="center"
-            android:fontFamily="sans-serif-black">
-        </TextView>
+            android:text="1"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></TextView>
 
-    </LinearLayout>
-    <LinearLayout
+        <TextView
+            android:id="@+id/card_front"
+            android:layout_width="300dp"
+            android:layout_height="450dp"
+            android:layout_margin="50dp"
+            android:background="@drawable/custom_front_card_background"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:text="0"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></TextView>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
         >
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:textColor="#3B82F6"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_right"
+            android:layout_width="wrap_content"
             android:background="@color/white"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="30dp"
-            android:text="Tap to flip it"></Button>
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_chevron_right_24"
+            android:backgroundTint="@color/white"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_marginStart="20dp"
+            android:backgroundTint="@color/white"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.36"
+            app:srcCompat="@drawable/baseline_chevron_left" />
+
+        <TextView
+            android:id="@+id/txtNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:text="0"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtSum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:text="0"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.508" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 </LinearLayout>

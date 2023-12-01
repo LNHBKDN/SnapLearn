@@ -2,7 +2,9 @@ package com.example.snaplearn.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,10 +19,13 @@ import com.example.snaplearn.databinding.ActivityUpdateCardBinding;
 import com.example.snaplearn.model.FlashCard;
 import com.example.snaplearn.model.Set;
 import com.example.snaplearn.viewmodel.CardAdapter;
+import com.example.snaplearn.viewmodel.ItemTouchHelperListener;
+import com.example.snaplearn.viewmodel.RecylerViewItemTouchHelper;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,7 +37,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UpdateCard extends AppCompatActivity {
+public class UpdateCard extends AppCompatActivity implements ItemTouchHelperListener {
 
     private ActivityUpdateCardBinding binding;
     private String uid;
@@ -41,6 +46,7 @@ public class UpdateCard extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference listCardRef;
     private DatabaseReference setsReference2;
+    CardAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,6 +99,8 @@ public class UpdateCard extends AppCompatActivity {
                 onBackPressed();
             }
         });
+        ItemTouchHelper.SimpleCallback simpleCallback = new RecylerViewItemTouchHelper(0,ItemTouchHelper.LEFT,this);
+        new ItemTouchHelper(simpleCallback).attachToRecyclerView(binding.rvCards);
     }
 
     public void loadRV(){
@@ -109,7 +117,7 @@ public class UpdateCard extends AppCompatActivity {
                 LinearLayoutManager layoutManager = new LinearLayoutManager(UpdateCard.this);
                 binding.rvCards.setLayoutManager(layoutManager);
                 // Hiển thị dữ liệu trong RecyclerView bằng cách sử dụng Adapter
-                CardAdapter adapter = new CardAdapter(cardList);
+                adapter = new CardAdapter(cardList);
                 binding.rvCards.setAdapter(adapter);
             }
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -162,4 +170,23 @@ public class UpdateCard extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onSwiped(RecyclerView.ViewHolder viewHolder) {
+        if (viewHolder instanceof CardAdapter.CardViewHolder) {
+            final int cardDelIndex = viewHolder.getAdapterPosition();
+            final FlashCard delCard = adapter.getItem(cardDelIndex);
+
+            // Remove the item from the adapter and show a Snackbar for undo
+            adapter.removeItem(cardDelIndex);
+            Snackbar snackbar = Snackbar.make(binding.getRoot(), "Remove", Snackbar.LENGTH_LONG);
+            snackbar.setAction("UNDO", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Undo the deletion
+                    adapter.undoItem( delCard,cardDelIndex);
+                }
+            });
+            snackbar.show();
+        }
+    }
 }

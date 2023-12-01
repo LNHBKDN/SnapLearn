@@ -80,6 +80,8 @@ public class CreateSet extends AppCompatActivity {
         binding.editTextTerm.setVisibility(View.GONE);
         binding.editTextDefinition.setVisibility(View.GONE);
         binding.btnAddCard.setVisibility(View.GONE);
+        binding.tvTerm.setVisibility(View.GONE);
+        binding.tvTerm.setVisibility(View.GONE);
         binding.btnCreateSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,6 +118,8 @@ public class CreateSet extends AppCompatActivity {
                     binding.editTextTerm.setVisibility(View.VISIBLE);
                     binding.editTextDefinition.setVisibility(View.VISIBLE);
                     binding.btnAddCard.setVisibility(View.VISIBLE);
+                    binding.tvTerm.setVisibility(View.VISIBLE);
+                    binding.tvDef.setVisibility(View.VISIBLE);
 
                 }else{
                     Log.d("DEBUG","Create set failed");

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -134,21 +135,14 @@ public class MainActivity extends AppCompatActivity implements SetAdapter.SetCli
 
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder) {
-        if(viewHolder instanceof SetAdapter.SetHolder) {
-            if (viewHolder instanceof SetAdapter.SetHolder) {
-                int position = viewHolder.getAdapterPosition();
+        if (viewHolder instanceof SetAdapter.SetHolder) {
+            int position = viewHolder.getAdapterPosition();
 
+            if (position != RecyclerView.NO_POSITION && position < adapter.getItemCount()) {
                 Set deletedSet = adapter.getItem(position);
 
                 adapter.removeItem(position);
 
-                Snackbar.make(binding.getRoot(), "Set deleted", Snackbar.LENGTH_LONG)
-                        .setAction("UNDO", v -> {
-                            // Undo the deletion
-                            adapter.undoDeleteItem(position, deletedSet);
-                        })
-                        .setActionTextColor(Color.YELLOW)
-                        .show();
             }
         }
     }

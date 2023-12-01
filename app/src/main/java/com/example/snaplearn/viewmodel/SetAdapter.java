@@ -7,12 +7,17 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.snaplearn.R;
 import com.example.snaplearn.model.Set;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +25,12 @@ import java.util.List;
 public class SetAdapter extends FirebaseRecyclerAdapter<Set, SetAdapter.SetHolder> {
 
     private SetClickListener setClickListener;
-    private List<Set> deletedSets; // Store deleted sets for undo
+
 
     public SetAdapter(@NonNull FirebaseRecyclerOptions<Set> options, SetClickListener setClickListener) {
         super(options);
         this.setClickListener = setClickListener;
-        this.deletedSets = new ArrayList<>();
+
     }
 
     @Override
@@ -54,15 +59,48 @@ public class SetAdapter extends FirebaseRecyclerAdapter<Set, SetAdapter.SetHolde
     }
 
     public void removeItem(int position) {
-        Set deletedSet = getItem(position);
-        deletedSets.add(deletedSet);
-        getSnapshots().getSnapshot(position).getRef().removeValue();
+        DatabaseReference setRef = getRef(position);
+
+        // Remove the set from the database
+        setRef.removeValue()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // Item removed successfully
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Handle the failure to remove the item
+                    }
+                });
+    }
+    @Override
+    public int getItemCount() {
+        return super.getItemCount();
     }
 
     public void undoDeleteItem(int position, Set deletedSet) {
-        getSnapshots().getSnapshot(position).getRef().setValue(deletedSet);
-        deletedSets.remove(deletedSet);
+        // Get the reference to the location where the item was deleted from
+        DatabaseReference setRef = getRef(position);
+
+        // Add the deleted set back to the same location
+        setRef.setValue(deletedSet)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // Undo successful
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Handle the failure to undo the deletion
+                    }
+                });
     }
+
 
     public interface SetClickListener {
         void onSetLongClick(String idSet);

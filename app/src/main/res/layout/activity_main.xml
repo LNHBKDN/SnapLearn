@@ -56,10 +56,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_set"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_set"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
     </LinearLayout>
     </LinearLayout>
 

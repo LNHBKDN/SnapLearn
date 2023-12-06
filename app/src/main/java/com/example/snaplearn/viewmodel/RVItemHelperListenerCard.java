@@ -9,9 +9,9 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class RecylerViewItemTouchHelper extends ItemTouchHelper.SimpleCallback {
+public class RVItemHelperListenerCard extends ItemTouchHelper.SimpleCallback {
     private ItemTouchHelperListener listener;
-    public RecylerViewItemTouchHelper(int dragDirs, int swipeDirs, ItemTouchHelperListener listener) {
+    public RVItemHelperListenerCard(int dragDirs, int swipeDirs, ItemTouchHelperListener listener) {
         super(dragDirs, swipeDirs);
         this.listener = listener;
     }
@@ -32,26 +32,26 @@ public class RecylerViewItemTouchHelper extends ItemTouchHelper.SimpleCallback {
     public void onSelectedChanged(@Nullable RecyclerView.ViewHolder viewHolder, int actionState) {
         View foreGroundView = null;
         if (viewHolder != null) {
-            foreGroundView = ((SetAdapter.SetHolder) viewHolder).layoutForeGround;
+            foreGroundView = ((CardAdapter.CardViewHolder) viewHolder).foreground;
         }
         getDefaultUIUtil().onSelected(foreGroundView);
     }
 
     @Override
     public void onChildDrawOver(@NonNull Canvas c, @NonNull RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-        View foreGroundView = ((SetAdapter.SetHolder)viewHolder).layoutForeGround;
-       getDefaultUIUtil().onDrawOver(c,recyclerView,foreGroundView,dX,dY,actionState,isCurrentlyActive);
+        View foreGroundView = ((CardAdapter.CardViewHolder) viewHolder).foreground;
+        getDefaultUIUtil().onDrawOver(c,recyclerView,foreGroundView,dX,dY,actionState,isCurrentlyActive);
     }
 
     @Override
     public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-        View foreGroundView = ((SetAdapter.SetHolder)viewHolder).layoutForeGround;
-       getDefaultUIUtil().onDraw(c,recyclerView,foreGroundView,dX,dY,actionState,isCurrentlyActive);
+        View foreGroundView = ((CardAdapter.CardViewHolder) viewHolder).foreground;
+        getDefaultUIUtil().onDraw(c,recyclerView,foreGroundView,dX,dY,actionState,isCurrentlyActive);
     }
 
     @Override
     public void clearView(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
-        View foreGroundView = ((SetAdapter.SetHolder)viewHolder).layoutForeGround;
+        View foreGroundView = ((CardAdapter.CardViewHolder) viewHolder).foreground;
         getDefaultUIUtil().clearView(foreGroundView);
     }
 }

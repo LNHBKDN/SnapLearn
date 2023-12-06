@@ -20,6 +20,7 @@ import com.example.snaplearn.model.FlashCard;
 import com.example.snaplearn.model.Set;
 import com.example.snaplearn.viewmodel.CardAdapter;
 import com.example.snaplearn.viewmodel.ItemTouchHelperListener;
+import com.example.snaplearn.viewmodel.RVItemHelperListenerCard;
 import com.example.snaplearn.viewmodel.RecylerViewItemTouchHelper;
 import com.example.snaplearn.viewmodel.SetAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -99,7 +100,7 @@ public class UpdateCard extends AppCompatActivity implements ItemTouchHelperList
                 onBackPressed();
             }
         });
-        ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new RecylerViewItemTouchHelper(0,ItemTouchHelper.LEFT,this);
+        ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new RVItemHelperListenerCard(0,ItemTouchHelper.LEFT,this);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(binding.rvCards);
 
     }
@@ -174,29 +175,21 @@ public class UpdateCard extends AppCompatActivity implements ItemTouchHelperList
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder) {
         if (viewHolder instanceof CardAdapter.CardViewHolder) {
-            int position = viewHolder.getAdapterPosition();
+            int swipedPosition = viewHolder.getAdapterPosition();
+            CardAdapter adapter = (CardAdapter) binding.rvCards.getAdapter();
 
-            if (position != RecyclerView.NO_POSITION) {
-                // Assuming you have a reference to your CardAdapter instance
-                CardAdapter adapter = (CardAdapter) binding.rvCards.getAdapter();
-
-                if (adapter != null) {
-                    FlashCard deletedCard = adapter.getItem(position);
-
-                    // Assuming you have implemented deleteItem method in CardAdapter
-                    adapter.deleteItem(position, uid, setID);
-
-                    // Show a Snackbar for the user to undo the deletion
-                    Snackbar.make(binding.rvCards, "Card deleted", Snackbar.LENGTH_LONG)
-                            .setAction("Undo", new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    // Assuming you have implemented undoItem method in CardAdapter
-                                    adapter.undoItem(deletedCard, position);
-                                }
-                            })
-                            .show();
-                }
+            if (adapter != null) {
+                FlashCard swipedCard = adapter.getItem(swipedPosition);
+                adapter.deleteItem(swipedPosition, uid, setID);
+//                Snackbar.make(binding.rvCards, "Card deleted", Snackbar.LENGTH_LONG)
+//                        .setAction("Undo", new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View view) {
+//                                // If the user clicks Undo, add the card back to the adapter
+//                                adapter.undoItem(swipedCard, swipedPosition);
+//                            }
+//                        })
+//                        .show();
             }
         }
     }

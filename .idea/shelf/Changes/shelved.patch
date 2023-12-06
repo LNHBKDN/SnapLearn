@@ -1,0 +1,16 @@
+Index: app/src/main/res/drawable/button_background.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/button_background.xml b/app/src/main/res/drawable/button_background.xml
+new file mode 100644
+--- /dev/null	(date 1700784378117)
++++ b/app/src/main/res/drawable/button_background.xml	(date 1700784378117)
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="utf-8"?>
++<shape xmlns:android="http://schemas.android.com/apk/res/android">
++    <solid android:color="#3B82F6" />
++    <corners android:radius="45dp" /> <!-- Điều này sẽ bo góc nút -->
++</shape>
+\ No newline at end of file

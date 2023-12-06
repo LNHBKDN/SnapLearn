@@ -1,0 +1,111 @@
+Index: .idea/.gitignore
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+deleted file mode 100644
+--- a/.idea/.gitignore	(revision a0bbe6bb57f55efc14155c4fcb1bf08c493b1c67)
++++ /dev/null	(revision a0bbe6bb57f55efc14155c4fcb1bf08c493b1c67)
+@@ -1,3 +0,0 @@
+-# Default ignored files
+-/shelf/
+-/workspace.xml
+Index: app/src/main/java/com/example/snaplearn/view/Set.java
+===================================================================
+diff --git a/app/src/main/java/com/example/snaplearn/view/Set.java b/app/src/main/java/com/example/snaplearn/view/Set.java
+deleted file mode 100644
+--- a/app/src/main/java/com/example/snaplearn/view/Set.java	(revision a0bbe6bb57f55efc14155c4fcb1bf08c493b1c67)
++++ /dev/null	(revision a0bbe6bb57f55efc14155c4fcb1bf08c493b1c67)
+@@ -1,16 +0,0 @@
+-package com.example.snaplearn.view;
+-
+-import androidx.appcompat.app.AppCompatActivity;
+-
+-import android.os.Bundle;
+-
+-import com.example.snaplearn.R;
+-
+-public class Set extends AppCompatActivity {
+-
+-    @Override
+-    protected void onCreate(Bundle savedInstanceState) {
+-        super.onCreate(savedInstanceState);
+-        setContentView(R.layout.activity_set);
+-    }
+-}
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_login.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".view.Login\"\r\n    android:padding=\"10dp\"\r\n    android:orientation=\"vertical\">\r\n\r\n    <TextView\r\n        android:id=\"@+id/welcome_bac\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"222dp\"\r\n        android:gravity=\"center_horizontal\"\r\n        android:text=\"Welcome Back\"\r\n        android:textColor=\"#1A1A1A\"\r\n        android:textSize=\"40dp\"\r\n        android:textStyle=\"bold\" />\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:orientation=\"vertical\"\r\n        >\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"match_parent\"\r\n            android:orientation=\"vertical\"\r\n            android:padding=\"40dp\"></LinearLayout>\r\n    </LinearLayout>\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"vertical\">\r\n            <TextView\r\n                android:id=\"@+id/username\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginTop=\"4dp\"\r\n                android:gravity=\"top\"\r\n                android:text=\"Username:\"\r\n                android:textSize=\"25dp\" />\r\n            <EditText\r\n                android:id=\"@+id/edt_username\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginTop=\"8dp\"\r\n                android:paddingStart=\"8dp\"\r\n                android:background=\"@drawable/rectangle_2\"\r\n                ></EditText>\r\n        </LinearLayout>\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"vertical\"\r\n            >\r\n            <TextView\r\n                android:id=\"@+id/password\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginTop=\"4dp\"\r\n                android:gravity=\"top\"\r\n                android:text=\"Password:\"\r\n                android:textSize=\"25dp\" />\r\n            <EditText\r\n                android:id=\"@+id/edt_password\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginTop=\"8dp\"\r\n                android:paddingStart=\"8dp\"\r\n                android:inputType=\"textPassword\"\r\n                android:background=\"@drawable/rectangle_2\"></EditText>\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"match_parent\"\r\n            android:orientation=\"vertical\"\r\n            android:padding=\"10dp\"></LinearLayout>\r\n        </LinearLayout>\r\n\r\n        <Button\r\n            android:id=\"@+id/btn_login\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:backgroundTint=\"#3B82F6\"\r\n            android:padding=\"10dp\"\r\n            android:text=\"LOGIN\"\r\n            android:textColor=\"@color/white\"\r\n            android:textSize=\"25dp\"\r\n            android:textStyle=\"bold\" />\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"horizontal\">\r\n            <TextView\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"Don't have an account?\"\r\n                android:textSize=\"25dp\"\r\n                ></TextView>\r\n            <TextView\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"match_parent\"\r\n                android:text=\"Register\"\r\n                android:textColor=\"#1A1A1A\"\r\n                android:textStyle=\"bold\"\r\n                android:onClick=\"Register\"\r\n                android:textSize=\"25dp\"\r\n                ></TextView>\r\n        </LinearLayout>\r\n</LinearLayout>\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_login.xml b/app/src/main/res/layout/activity_login.xml
+--- a/app/src/main/res/layout/activity_login.xml	(revision a0bbe6bb57f55efc14155c4fcb1bf08c493b1c67)
++++ b/app/src/main/res/layout/activity_login.xml	(date 1700784452302)
+@@ -88,7 +88,9 @@
+             android:text="LOGIN"
+             android:textColor="@color/white"
+             android:textSize="25dp"
+-            android:textStyle="bold" />
++            android:textStyle="bold"
++            android:background="@drawable/button_background"
++            />
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"VcsDirectoryMappings\">\r\n    <mapping directory=\"$PROJECT_DIR$\" vcs=\"Git\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+--- a/.idea/vcs.xml	(revision a0bbe6bb57f55efc14155c4fcb1bf08c493b1c67)
++++ b/.idea/vcs.xml	(date 1701177471323)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="VcsDirectoryMappings">
+-    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++    <mapping directory="" vcs="Git" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_create_set.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".view.CreateSet\">\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:orientation=\"vertical\">\r\n        <include layout=\"@layout/create_set_toolbar\"/>\r\n        <TextView\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Name\"\r\n            android:textSize=\"25sp\"\r\n            android:layout_marginLeft=\"10dp\"\r\n            android:textColor=\"#3B82F6\"/>\r\n\r\n        <EditText\r\n            android:id=\"@+id/editText_nameSet\"\r\n            android:layout_width=\"390sp\"\r\n            android:layout_height=\"48dp\"\r\n            android:hint=\"Name\"\r\n            android:layout_marginLeft=\"10dp\" />\r\n\r\n        <TextView\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Description\"\r\n            android:textSize=\"25sp\"\r\n            android:layout_marginLeft=\"10dp\"\r\n            android:textColor=\"#3B82F6\"/>\r\n        <EditText\r\n            android:id=\"@+id/editText_description\"\r\n            android:layout_width=\"390sp\"\r\n            android:layout_height=\"48dp\"\r\n            android:hint=\"Description\"\r\n            android:layout_marginLeft=\"10dp\"/>\r\n        <Button\r\n            android:id=\"@+id/btn_create_set\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginLeft=\"150dp\"\r\n            android:text=\"Create Set\"/>\r\n\r\n        <TextView\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Term\"\r\n            android:textSize=\"25sp\"\r\n            android:layout_marginLeft=\"20dp\"\r\n            android:textColor=\"#3B82F6\"/>\r\n\r\n        <EditText\r\n            android:id=\"@+id/editText_term\"\r\n            android:layout_width=\"390sp\"\r\n            android:layout_height=\"48dp\"\r\n            android:hint=\"Term\"\r\n            android:layout_marginLeft=\"20dp\" />\r\n\r\n        <TextView\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Definition\"\r\n            android:textSize=\"25sp\"\r\n            android:layout_marginLeft=\"20dp\"\r\n            android:textColor=\"#3B82F6\"/>\r\n        <EditText\r\n            android:id=\"@+id/editText_definition\"\r\n            android:layout_width=\"390sp\"\r\n            android:layout_height=\"48dp\"\r\n            android:hint=\"Definition\"\r\n            android:layout_marginLeft=\"20dp\"/>\r\n        <androidx.recyclerview.widget.RecyclerView\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"/>\r\n    </LinearLayout>\r\n    <com.google.android.material.floatingactionbutton.FloatingActionButton\r\n        android:id=\"@+id/btn_add_card\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:clickable=\"true\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.954\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.976\"\r\n        app:srcCompat=\"@drawable/baseline_add_24\" />\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_create_set.xml b/app/src/main/res/layout/activity_create_set.xml
+--- a/app/src/main/res/layout/activity_create_set.xml	(revision a0bbe6bb57f55efc14155c4fcb1bf08c493b1c67)
++++ b/app/src/main/res/layout/activity_create_set.xml	(date 1701177471333)
+@@ -74,6 +74,7 @@
+             android:hint="Definition"
+             android:layout_marginLeft="20dp"/>
+         <androidx.recyclerview.widget.RecyclerView
++            android:id="@+id/rv_cards"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"/>
+     </LinearLayout>
+Index: app/src/main/java/com/example/snaplearn/view/Login.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.snaplearn.view;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.Toast;\r\n\r\nimport com.example.snaplearn.R;\r\nimport com.example.snaplearn.databinding.ActivityLoginBinding;\r\nimport com.google.android.gms.tasks.OnCompleteListener;\r\nimport com.google.android.gms.tasks.Task;\r\nimport com.google.firebase.auth.AuthResult;\r\nimport com.google.firebase.auth.FirebaseAuth;\r\nimport com.google.firebase.auth.FirebaseUser;\r\n\r\npublic class Login extends AppCompatActivity {\r\n    private FirebaseAuth mAuth;\r\n    private ActivityLoginBinding binding;\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        binding = ActivityLoginBinding.inflate(getLayoutInflater());\r\n        setContentView(binding.getRoot());\r\n\r\n        mAuth = FirebaseAuth.getInstance();\r\n        binding.btnLogin.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                String username = binding.edtUsername.getText().toString();\r\n                String password = binding.edtPassword.getText().toString();\r\n                mAuth.signInWithEmailAndPassword(username,password)\r\n                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {\r\n                            @Override\r\n                            public void onComplete(@NonNull Task<AuthResult> task) {\r\n                                if(task.isSuccessful()){\r\n                                    Intent intent = new Intent(Login.this, MainActivity.class);\r\n                                    startActivity(intent);\r\n                                }else{\r\n                                    Toast.makeText(Login.this,\"Username or Password wrong\",Toast.LENGTH_SHORT).show();\r\n                                }\r\n                            }\r\n                        });\r\n            }\r\n        });\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/snaplearn/view/Login.java b/app/src/main/java/com/example/snaplearn/view/Login.java
+--- a/app/src/main/java/com/example/snaplearn/view/Login.java	(revision a0bbe6bb57f55efc14155c4fcb1bf08c493b1c67)
++++ b/app/src/main/java/com/example/snaplearn/view/Login.java	(date 1700790800533)
+@@ -39,7 +39,7 @@
+                                     Intent intent = new Intent(Login.this, MainActivity.class);
+                                     startActivity(intent);
+                                 }else{
+-                                    Toast.makeText(Login.this,"Username or Password wrong",Toast.LENGTH_SHORT).show();
++                                    Toast.makeText(Login.this,"Wrong username or password",Toast.LENGTH_SHORT).show();
+                                 }
+                             }
+                         });

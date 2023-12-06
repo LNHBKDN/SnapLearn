@@ -8,8 +8,6 @@
     android:padding="8dp"
     android:outlineSpotShadowColor="@color/white"
     >
-
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -76,6 +74,7 @@
                 android:inputType="none"
                 android:focusable="false"
                 android:paddingStart="10dp"
+                android:textStyle="bold"
                 android:textColor="@color/black"></EditText>
         </LinearLayout>
         <LinearLayout

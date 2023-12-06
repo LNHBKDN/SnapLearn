@@ -26,6 +26,7 @@ public class Login extends AppCompatActivity {
 
     FirebaseAuth mAuth;
     ActivityLoginBinding activityLoginBinding;
+    private String uid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,9 +37,8 @@ public class Login extends AppCompatActivity {
         setContentView(view);
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
-//        String uid = currentUser.getUid();
 
-        String uid = "9MkPhphsNDS9m7tawSRfk78qNq82";
+
         activityLoginBinding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,6 +50,7 @@ public class Login extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
                                     Intent intent = new Intent(Login.this, MainActivity.class);
+                                    uid = currentUser.getUid();
                                     intent.putExtra("UID",uid);
                                     startActivity(intent);
                                 }else{

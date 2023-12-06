@@ -87,7 +87,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_cards"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="409dp" />
     </LinearLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_add_card"

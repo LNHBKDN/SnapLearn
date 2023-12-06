@@ -14,41 +14,42 @@
         tools:layout_editor_absoluteY="0dp">
 
         <include layout="@layout/create_set_toolbar" />
-
-        <TextView
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Name"
-            android:textColor="#3B82F6"
-            android:textSize="25sp" />
+            android:paddingTop="8dp">
 
-        <EditText
-            android:id="@+id/editText_nameSet"
-            android:layout_width="374dp"
-            android:layout_height="48dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/out_line_ele1"
-            android:hint="Name"
-            android:paddingStart="8dp" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextNameSet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/out_line_ele1"
+                android:hint="Name set"
+                tools:ignore="TouchTargetSizeCheck"
+                android:inputType="text"
+                android:paddingStart="8dp"
+                android:lines="1"/>
 
-        <TextView
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Description"
-            android:textColor="#3B82F6"
-            android:textSize="25sp" />
+            android:paddingTop="8dp">
 
-        <EditText
-            android:id="@+id/editText_description"
-            android:layout_width="374dp"
-            android:layout_height="48dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/out_line_ele1"
-            android:hint="Description"
-            android:paddingStart="8dp" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/out_line_ele1"
+                android:hint="Description"
+                tools:ignore="TouchTargetSizeCheck"
+                android:paddingStart="8dp"
+                android:inputType="text"
+                android:lines="1"/>
 
+
+        </com.google.android.material.textfield.TextInputLayout>
         <Button
             android:id="@+id/btn_create_set"
             android:layout_width="wrap_content"

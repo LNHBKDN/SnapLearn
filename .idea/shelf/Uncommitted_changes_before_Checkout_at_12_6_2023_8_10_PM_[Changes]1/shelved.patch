@@ -1,0 +1,19 @@
+Index: app/src/main/res/drawable/frame_15.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<vector\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:aapt=\"http://schemas.android.com/aapt\"\r\n    android:width=\"365dp\"\r\n    android:height=\"187dp\"\r\n    android:viewportWidth=\"365\"\r\n    android:viewportHeight=\"187\"\r\n    >\r\n    <group>\r\n        <clip-path\r\n            android:pathData=\"M16 0H349C357.837 0 365 7.16344 365 16V171C365 179.837 357.837 187 349 187H16C7.16344 187 0 179.837 0 171V16C0 7.16344 7.16344 0 16 0Z\"\r\n            />\r\n        <path\r\n            android:pathData=\"M0 0V187H365V0\"\r\n            android:fillColor=\"#1A007EC5\"\r\n            />\r\n        <path\r\n            android:pathData=\"M16 0H349C357.837 0 365 7.16344 365 16V171C365 179.837 357.837 187 349 187H16C7.16344 187 0 179.837 0 171V16C0 7.16344 7.16344 0 16 0Z\"\r\n            android:strokeWidth=\"5\"\r\n            android:strokeColor=\"#1A007EC5\"\r\n            />\r\n    </group>\r\n</vector>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/frame_15.xml b/app/src/main/res/drawable/frame_15.xml
+--- a/app/src/main/res/drawable/frame_15.xml	(revision 0a392cec4327d270065e4030c795b8aa4ff7edf3)
++++ b/app/src/main/res/drawable/frame_15.xml	(date 1701868222817)
+@@ -13,7 +13,7 @@
+             />
+         <path
+             android:pathData="M0 0V187H365V0"
+-            android:fillColor="#1A007EC5"
++            android:fillColor="#3B82F6"
+             />
+         <path
+             android:pathData="M16 0H349C357.837 0 365 7.16344 365 16V171C365 179.837 357.837 187 349 187H16C7.16344 187 0 179.837 0 171V16C0 7.16344 7.16344 0 16 0Z"

@@ -21,9 +21,11 @@ public class SetMethod extends AppCompatActivity {
         binding = ActivitySetBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        Intent getIntent = getIntent();
-        uid = getIntent.getStringExtra("UID");
-        setID =getIntent.getStringExtra("idSet");
+//        Intent getIntent = getIntent();
+//        uid = getIntent.getStringExtra("UID");
+//        setID =getIntent.getStringExtra("idSet");
+        uid = "4pPPfxZrs5YPIPF91wRi3EAC7t72";
+        setID = "-NkQpHDCWrJEUtLwXO3G";
         binding.btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

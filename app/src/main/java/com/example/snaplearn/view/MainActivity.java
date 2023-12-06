@@ -83,6 +83,8 @@ public class MainActivity extends AppCompatActivity implements SetAdapter.SetCli
         });
         ItemTouchHelper.SimpleCallback simpleCallback = new RecylerViewItemTouchHelper(0,ItemTouchHelper.LEFT,this);
         new ItemTouchHelper(simpleCallback).attachToRecyclerView(binding.rvSet);
+
+
     }
     private void setupRV(FirebaseRecyclerOptions<Set> options){
         adapter = new SetAdapter(options, this);
@@ -106,7 +108,9 @@ public class MainActivity extends AppCompatActivity implements SetAdapter.SetCli
                     .build();
         }
         setupRV(options);
-
+    }
+    private void ClickSet()
+    {
 
     }
     @Override

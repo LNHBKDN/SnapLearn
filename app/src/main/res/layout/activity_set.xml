@@ -50,6 +50,7 @@
         android:layout_height="90dp"
         android:background="@color/white">
         <Button
+            android:id="@+id/btn_flash_card"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/custom_background_button"
@@ -71,7 +72,8 @@
         android:layout_height="90dp"
         android:background="@color/white">
         <Button
-            android:id="@+id/btn_practice"
+            android:id="@+id/btn_pratice"
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/custom_background_button"
@@ -93,6 +95,7 @@
         android:layout_height="90dp"
         android:background="@color/white">
         <Button
+            android:id="@+id/btn_write"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/custom_background_button"

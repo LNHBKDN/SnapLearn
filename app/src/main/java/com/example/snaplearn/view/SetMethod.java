@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.snaplearn.R;
 import com.example.snaplearn.databinding.ActivitySetBinding;
@@ -32,10 +33,11 @@ public class SetMethod extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        binding.btnPractice.setOnClickListener(new View.OnClickListener() {
+        binding.btnFlashCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SetMethod.this, Practice.class);
+                Intent intent=new Intent(SetMethod.this, FlashCard.class);
+
                 intent.putExtra("UID",uid);
                 intent.putExtra("setID",setID);
                 startActivity(intent);

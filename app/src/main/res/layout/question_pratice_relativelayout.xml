@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="360dp"
+    android:layout_height="170dp"
+    android:layout_alignParentLeft="true"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="20dp"
+    android:padding="8dp"
+    android:outlineSpotShadowColor="@color/white"
+    >
+
+
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:background="@drawable/flashcard_bg"-->
+
+<!--        >-->
+<!--        <TextView-->
+
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="DELETE"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_toStartOf="@+id/img_delete"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:textSize="20dp">-->
+
+<!--        </TextView>-->
+<!--        <ImageView-->
+<!--            android:id="@+id/img_delete"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/baseline_delete_20"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_marginEnd="20dp"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            ></ImageView>-->
+<!--    </RelativeLayout>-->
+
+    <LinearLayout
+        android:id="@+id/layout_foreground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/flash_card"
+        android:clipToOutline="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Definition: "
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:layout_marginTop="8dp"
+                android:paddingStart="10dp"
+                android:textColor="#3B82F6"></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edt_definition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Definition"
+                android:textSize="20dp"
+                android:inputType="none"
+                android:focusable="false"
+                android:paddingStart="10dp"
+                android:textColor="@color/black"></EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Term: "
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:paddingStart="10dp"
+                android:textColor="#3B82F6"></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/edt_term"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Fill in the term"
+                android:textSize="20dp"
+                android:inputType="none"
+                android:focusable="false"
+                android:textStyle="bold"
+                android:paddingStart="10dp"
+                android:textColor="@color/black"
+                ></EditText>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

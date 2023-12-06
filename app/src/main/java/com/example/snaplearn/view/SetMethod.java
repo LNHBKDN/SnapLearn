@@ -37,6 +37,7 @@ public class SetMethod extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(SetMethod.this, FlashCard.class);
+
                 intent.putExtra("UID",uid);
                 intent.putExtra("setID",setID);
                 startActivity(intent);

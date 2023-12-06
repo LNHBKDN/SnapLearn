@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#3B82F6"
+    android:padding="16dp">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_back"
+        android:src="@drawable/baseline_arrow_back_24"
+        android:layout_centerVertical="true"
+        android:clickable="true"
+        android:onClick="onBackButtonClick"></ImageView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Practice"
+        android:textColor="@color/white"
+        android:layout_toEndOf="@id/btn_back"
+        android:textSize="25sp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="25dp"></TextView>
+    <!--    <ImageView-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_alignParentEnd="true"-->
+    <!--        android:id="@+id/check_icon"-->
+    <!--        android:layout_centerVertical="true"-->
+    <!--        android:src="@drawable/baseline_check_24"></ImageView>-->
+
+</RelativeLayout>

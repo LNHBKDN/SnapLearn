@@ -32,5 +32,14 @@ public class SetMethod extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        binding.btnPractice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SetMethod.this, Practice.class);
+                intent.putExtra("UID",uid);
+                intent.putExtra("setID",setID);
+                startActivity(intent);
+            }
+        });
     }
 }

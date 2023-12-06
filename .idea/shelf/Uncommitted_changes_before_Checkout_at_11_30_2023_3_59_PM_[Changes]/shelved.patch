@@ -1,0 +1,269 @@
+Index: app/src/main/java/com/example/snaplearn/view/UpdateCard.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.snaplearn.view;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.app.Activity;\r\nimport android.os.Bundle;\r\n\r\nimport com.example.snaplearn.R;\r\nimport com.example.snaplearn.databinding.ActivityLoginBinding;\r\nimport com.example.snaplearn.databinding.ActivityUpdateCardBinding;\r\n\r\npublic class UpdateCard extends AppCompatActivity {\r\n\r\n    private ActivityUpdateCardBinding binding;\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        binding = ActivityUpdateCardBinding.inflate(getLayoutInflater());\r\n        setContentView(binding.getRoot());\r\n    }\r\n}
+===================================================================
+diff --git a/app/src/main/java/com/example/snaplearn/view/UpdateCard.java b/app/src/main/java/com/example/snaplearn/view/UpdateCard.java
+--- a/app/src/main/java/com/example/snaplearn/view/UpdateCard.java	
++++ b/app/src/main/java/com/example/snaplearn/view/UpdateCard.java	
+@@ -1,21 +1,68 @@
+ package com.example.snaplearn.view;
+ 
++import androidx.annotation.NonNull;
+ import androidx.appcompat.app.AppCompatActivity;
+ 
+ import android.app.Activity;
++import android.content.Intent;
+ import android.os.Bundle;
++import android.util.Log;
+ 
+ import com.example.snaplearn.R;
+ import com.example.snaplearn.databinding.ActivityLoginBinding;
+ import com.example.snaplearn.databinding.ActivityUpdateCardBinding;
++import com.example.snaplearn.model.Set;
++import com.google.firebase.database.DataSnapshot;
++import com.google.firebase.database.DatabaseError;
++import com.google.firebase.database.DatabaseReference;
++import com.google.firebase.database.FirebaseDatabase;
++import com.google.firebase.database.ValueEventListener;
+ 
+ public class UpdateCard extends AppCompatActivity {
+ 
+     private ActivityUpdateCardBinding binding;
++    private DatabaseReference setsReference;
++    private FirebaseDatabase database;
++    private String uid;
++    private String setID;
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+-        binding = ActivityUpdateCardBinding.inflate(getLayoutInflater());
+-        setContentView(binding.getRoot());
++//        binding = ActivityUpdateCardBinding.inflate(getLayoutInflater());
++//        setContentView(binding.getRoot());
++//
++//        Intent intent = getIntent();
++//        if(intent != null) {
++//            uid = intent.getStringExtra("UID");
++//            setID = intent.getStringExtra("setID");
++//
++//            // Now you have the UID and setID, you can use them as needed
++//            // For example, log or use them in your activity
++//            Log.d("UpdateCard", "UID: " + uid);
++//            Log.d("UpdateCard", "setID: " + setID);
++//
++//            // Use uid and setID in your activity's logic
++//        }
++//        database = FirebaseDatabase.getInstance();
++//        setsReference = database.getReference("users").child(uid).child("sets");
++//        setsReference.addListenerForSingleValueEvent(new ValueEventListener() {
++//            @Override
++//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
++//                if (dataSnapshot.exists()) {
++//                    // Retrieve data for the specific setID
++//                    Set setModel = dataSnapshot.getValue(Set.class);
++//                    binding.editTextNameSet.setText(setModel.getName());
++//                    binding.editTextDescription.setText(setModel.getDescription());
++//                    // Now you can use setModel to access the data
++//                } else {
++//                    // Handle if the setID doesn't exist
++//                }
++//            }
++//
++//            @Override
++//            public void onCancelled(@NonNull DatabaseError databaseError) {
++//                // Handle potential errors
++//            }
++//        });
+     }
+ }
+\ No newline at end of file
+Index: app/src/main/res/layout/term_definition_relativelayout.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<!--<RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"-->\r\n<!--    android:layout_width=\"match_parent\"-->\r\n<!--    android:layout_height=\"match_parent\">-->\r\n<!--    <LinearLayout-->\r\n<!--        android:layout_width=\"match_parent\"-->\r\n<!--        android:layout_height=\"match_parent\"-->\r\n<!--        android:orientation=\"vertical\">-->\r\n<!--        <TextView-->\r\n<!--            android:layout_width=\"match_parent\"-->\r\n<!--            android:layout_height=\"wrap_content\"-->\r\n<!--            android:text=\"Term\"-->\r\n<!--            android:textSize=\"25sp\"-->\r\n<!--            android:layout_marginLeft=\"10dp\"-->\r\n<!--            android:textColor=\"#3B82F6\"/>-->\r\n\r\n<!--        <EditText-->\r\n<!--            android:id=\"@+id/editText_nameSet\"-->\r\n<!--            android:layout_width=\"390sp\"-->\r\n<!--            android:layout_height=\"48dp\"-->\r\n<!--            android:hint=\"Term\"-->\r\n<!--            android:layout_marginLeft=\"10dp\" />-->\r\n\r\n<!--        <TextView-->\r\n<!--            android:layout_width=\"match_parent\"-->\r\n<!--            android:layout_height=\"wrap_content\"-->\r\n<!--            android:text=\"Definition\"-->\r\n<!--            android:textSize=\"25sp\"-->\r\n<!--            android:layout_marginLeft=\"10dp\"-->\r\n<!--            android:textColor=\"#3B82F6\"/>-->\r\n<!--        <EditText-->\r\n<!--            android:id=\"@+id/editText_description\"-->\r\n<!--            android:layout_width=\"390sp\"-->\r\n<!--            android:layout_height=\"48dp\"-->\r\n<!--            android:hint=\"Definition\"-->\r\n<!--            android:layout_marginLeft=\"10dp\"/>-->\r\n<!--    </LinearLayout>-->\r\n<!--</RelativeLayout>-->\r\n<RelativeLayout\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    android:id=\"@+id/frame_15\"\r\n    android:layout_width=\"360dp\"\r\n    android:layout_height=\"187dp\"\r\n    android:layout_alignParentLeft=\"true\"\r\n    android:layout_marginLeft=\"16dp\"\r\n    android:layout_marginTop=\"20dp\"\r\n    android:clipToOutline=\"true\"\r\n    android:background=\"@drawable/frame_15\">\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"match_parent\"\r\n            android:orientation=\"vertical\">\r\n            <TextView\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"Term\"\r\n                android:textSize=\"25sp\"\r\n                android:layout_marginLeft=\"10dp\"\r\n                android:textColor=\"#3B82F6\"/>\r\n\r\n            <EditText\r\n                android:id=\"@+id/editText_card_term\"\r\n                android:layout_width=\"336dp\"\r\n                android:layout_height=\"48dp\"\r\n                android:layout_marginLeft=\"10dp\"\r\n                android:background=\"@drawable/out_line_ele1\"\r\n                android:enabled=\"false\"\r\n                android:hint=\"Term\"\r\n                android:paddingStart=\"8dp\"\r\n                android:textColor=\"#E59462\" />\r\n\r\n            <TextView\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:text=\"Definition\"\r\n                android:textSize=\"25sp\"\r\n                android:layout_marginLeft=\"10dp\"\r\n                android:textColor=\"#3B82F6\"/>\r\n\r\n            <EditText\r\n                android:id=\"@+id/editText_card_description\"\r\n                android:layout_width=\"338dp\"\r\n                android:layout_height=\"48dp\"\r\n                android:layout_marginLeft=\"10dp\"\r\n                android:background=\"@drawable/out_line_ele1\"\r\n                android:enabled=\"false\"\r\n                android:hint=\"Definition\"\r\n                android:paddingStart=\"8dp\"\r\n                android:textColor=\"#E59462\" />\r\n        </LinearLayout>\r\n</RelativeLayout>
+===================================================================
+diff --git a/app/src/main/res/layout/term_definition_relativelayout.xml b/app/src/main/res/layout/term_definition_relativelayout.xml
+--- a/app/src/main/res/layout/term_definition_relativelayout.xml	
++++ b/app/src/main/res/layout/term_definition_relativelayout.xml	
+@@ -1,41 +1,4 @@
+ <?xml version="1.0" encoding="utf-8"?>
+-<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+-<!--    android:layout_width="match_parent"-->
+-<!--    android:layout_height="match_parent">-->
+-<!--    <LinearLayout-->
+-<!--        android:layout_width="match_parent"-->
+-<!--        android:layout_height="match_parent"-->
+-<!--        android:orientation="vertical">-->
+-<!--        <TextView-->
+-<!--            android:layout_width="match_parent"-->
+-<!--            android:layout_height="wrap_content"-->
+-<!--            android:text="Term"-->
+-<!--            android:textSize="25sp"-->
+-<!--            android:layout_marginLeft="10dp"-->
+-<!--            android:textColor="#3B82F6"/>-->
+-
+-<!--        <EditText-->
+-<!--            android:id="@+id/editText_nameSet"-->
+-<!--            android:layout_width="390sp"-->
+-<!--            android:layout_height="48dp"-->
+-<!--            android:hint="Term"-->
+-<!--            android:layout_marginLeft="10dp" />-->
+-
+-<!--        <TextView-->
+-<!--            android:layout_width="match_parent"-->
+-<!--            android:layout_height="wrap_content"-->
+-<!--            android:text="Definition"-->
+-<!--            android:textSize="25sp"-->
+-<!--            android:layout_marginLeft="10dp"-->
+-<!--            android:textColor="#3B82F6"/>-->
+-<!--        <EditText-->
+-<!--            android:id="@+id/editText_description"-->
+-<!--            android:layout_width="390sp"-->
+-<!--            android:layout_height="48dp"-->
+-<!--            android:hint="Definition"-->
+-<!--            android:layout_marginLeft="10dp"/>-->
+-<!--    </LinearLayout>-->
+-<!--</RelativeLayout>-->
+ <RelativeLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     android:id="@+id/frame_15"
+Index: app/src/main/res/layout/activity_update_card.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".view.UpdateCard\">\r\n\r\n    <androidx.recyclerview.widget.RecyclerView\r\n        android:id=\"@+id/rv_card\"\r\n        android:layout_width=\"391dp\"\r\n        android:layout_height=\"849dp\"\r\n        tools:layout_editor_absoluteX=\"1dp\"\r\n        tools:layout_editor_absoluteY=\"1dp\" />\r\n\r\n</RelativeLayout>
+===================================================================
+diff --git a/app/src/main/res/layout/activity_update_card.xml b/app/src/main/res/layout/activity_update_card.xml
+--- a/app/src/main/res/layout/activity_update_card.xml	
++++ b/app/src/main/res/layout/activity_update_card.xml	
+@@ -1,16 +1,119 @@
+ <?xml version="1.0" encoding="utf-8"?>
+-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    tools:context=".view.UpdateCard">
++    tools:context=".view.CreateSet">
++
++    <LinearLayout
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        android:orientation="vertical"
++        tools:layout_editor_absoluteX="0dp"
++        tools:layout_editor_absoluteY="0dp">
++
++        <include layout="@layout/create_set_toolbar" />
++
++        <TextView
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_marginLeft="10dp"
++            android:text="Name"
++            android:textColor="#3B82F6"
++            android:textSize="25sp" />
++
++        <EditText
++            android:id="@+id/editText_nameSet"
++            android:layout_width="374dp"
++            android:layout_height="48dp"
++            android:layout_marginLeft="10dp"
++            android:background="@drawable/out_line_ele1"
++            android:hint="Name"
++            android:paddingStart="8dp" />
++
++        <TextView
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_marginLeft="10dp"
++            android:text="Description"
++            android:textColor="#3B82F6"
++            android:textSize="25sp" />
++
++        <EditText
++            android:id="@+id/editText_description"
++            android:layout_width="374dp"
++            android:layout_height="48dp"
++            android:layout_marginLeft="10dp"
++            android:background="@drawable/out_line_ele1"
++            android:hint="Description"
++            android:paddingStart="8dp" />
++
++        <TextView
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_marginLeft="20dp"
++            android:text="Term"
++            android:textColor="#3B82F6"
++            android:textSize="25sp" />
++
++        <EditText
++            android:id="@+id/editText_term"
++            android:layout_width="362dp"
++            android:layout_height="48dp"
++            android:layout_marginLeft="20dp"
++            android:background="@drawable/out_line_ele1"
++            android:hint="Term"
++            android:paddingStart="8dp" />
++
++        <TextView
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_marginLeft="20dp"
++            android:text="Definition"
++            android:textColor="#3B82F6"
++            android:textSize="25sp" />
++
++        <EditText
++            android:id="@+id/editText_definition"
++            android:layout_width="361dp"
++            android:layout_height="48dp"
++            android:layout_marginLeft="20dp"
++            android:background="@drawable/out_line_ele1"
++            android:hint="Definition"
++            android:paddingStart="8dp" />
+ 
+-    <androidx.recyclerview.widget.RecyclerView
+-        android:id="@+id/rv_card"
+-        android:layout_width="391dp"
+-        android:layout_height="849dp"
+-        tools:layout_editor_absoluteX="1dp"
+-        tools:layout_editor_absoluteY="1dp" />
++        <androidx.recyclerview.widget.RecyclerView
++            android:id="@+id/rv_cards"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content" />
++
++
++    </LinearLayout>
++    <com.google.android.material.floatingactionbutton.FloatingActionButton
++        android:id="@+id/btn_add_card"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:clickable="true"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.954"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.976"
++        app:srcCompat="@drawable/baseline_add_24" />
++
++    <com.google.android.material.floatingactionbutton.FloatingActionButton
++        android:id="@+id/btn_comfirm"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="10dp"
++        android:clickable="true"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++
++        app:layout_constraintVertical_bias="0.976"
++        app:srcCompat="@drawable/baseline_check_24" />
+ 
+-</RelativeLayout>
+\ No newline at end of file
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file

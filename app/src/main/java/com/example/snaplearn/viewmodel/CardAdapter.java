@@ -1,30 +1,40 @@
 package com.example.snaplearn.viewmodel;
 
+import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.snaplearn.R;
 import com.example.snaplearn.model.FlashCard;
+import com.example.snaplearn.view.UpdateCard;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder> {
-    private List<FlashCard> cardList;
-    public CardAdapter(List<FlashCard> cardList) {
+    private static List<FlashCard> cardList;
+    private static OnItemClickListener listener;
+    public CardAdapter( List<FlashCard> cardList) {
         this.cardList = cardList;
+    }
+    public interface OnItemClickListener {
+        void onItemClick(FlashCard flashCard);
+    }
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
     public static class CardViewHolder extends RecyclerView.ViewHolder {
         private EditText edtTerm;
@@ -36,6 +46,15 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
             edtTerm = itemView.findViewById(R.id.editText_card_term);
             edtDefinition = itemView.findViewById(R.id.editText_card_description);
             foreground = itemView.findViewById(R.id.foreground);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && listener != null) {
+                        listener.onItemClick(cardList.get(position));
+                    }
+                }
+            });
         }
     }
     @NonNull
@@ -99,4 +118,5 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         }
         return null;
     }
+
 }

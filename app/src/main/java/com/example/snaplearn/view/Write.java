@@ -14,6 +14,7 @@ import com.example.snaplearn.databinding.ActivityPracticeBinding;
 import com.example.snaplearn.databinding.ActivityWriteBinding;
 import com.example.snaplearn.model.FlashCard;
 import com.example.snaplearn.viewmodel.ItemExamAdapter;
+import com.example.snaplearn.viewmodel.Practice_Question_Adapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,7 +32,6 @@ public class Write extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference listCardRef;
     private List<FlashCard> cardList;
-    private ItemExamAdapter examAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +46,9 @@ public class Write extends AppCompatActivity {
         setsReference = database.getReference("users").child(uid).child("sets").child(IdSet);
         listCardRef = database.getReference("users").child(uid).child("sets").child(IdSet).child("listCard");
         binding.rvExam.setLayoutManager(new LinearLayoutManager(Write.this));
-        examAdapter = new ItemExamAdapter(new ArrayList<>());
-        binding.rvExam.setAdapter(examAdapter);
-        cardList = new ArrayList<>();
         fetchFlashCardsFromFirebase();
-//        PagerSnapHelper psh = new PagerSnapHelper();
-//        psh.attachToRecyclerView(binding.rvExam);
+        PagerSnapHelper psh = new PagerSnapHelper();
+        psh.attachToRecyclerView(binding.rvExam);
     }
     private void fetchFlashCardsFromFirebase() {
         listCardRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -63,16 +60,19 @@ public class Write extends AppCompatActivity {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         FlashCard flashCard = snapshot.getValue(FlashCard.class);
                         cardList.add(flashCard);
-                        examAdapter.notifyDataSetChanged();
                     }
-
+                    LinearLayoutManager layoutManager = new LinearLayoutManager(Write.this);
+                    binding.rvExam.setLayoutManager(layoutManager);
+                    // Hiển thị dữ liệu trong RecyclerView bằng cách sử dụng Adapter
+                    ItemExamAdapter adapter = new ItemExamAdapter( cardList);
+                    binding.rvExam.setAdapter(adapter);
                     // Kiểm tra xem dữ liệu đã lấy thành công không
                     for (FlashCard card : cardList) {
                         Log.d("CardInfo", "Term: " + card.getTerm() + ", Definition: " + card.getDefinition());
                     }
 
                     // Cập nhật adapter sau khi có dữ liệu
-                    examAdapter.notifyDataSetChanged();
+                    adapter.notifyDataSetChanged();
                 } else {
                     Log.d("FetchData", "Data does not exist");
                 }

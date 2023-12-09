@@ -35,6 +35,7 @@ public class RVItemHelperListenerCard extends ItemTouchHelper.SimpleCallback {
             foreGroundView = ((CardAdapter.CardViewHolder) viewHolder).foreground;
         }
         getDefaultUIUtil().onSelected(foreGroundView);
+
     }
 
     @Override

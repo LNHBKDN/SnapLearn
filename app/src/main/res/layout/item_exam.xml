@@ -20,6 +20,7 @@
             android:text="Caau hoi"
             android:textSize="35dp"
             android:paddingTop="40dp"
+            android:enabled="false"
             ></EditText>
         <TextView
             android:layout_width="match_parent"
@@ -38,6 +39,7 @@
         android:padding="16dp"
         >
         <RadioGroup
+            android:id="@+id/rdio_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton

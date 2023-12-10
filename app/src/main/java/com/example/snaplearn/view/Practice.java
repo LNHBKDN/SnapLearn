@@ -70,7 +70,6 @@ public class Practice extends AppCompatActivity implements Practice_Question_Ada
 
                 LinearLayoutManager layoutManager = new LinearLayoutManager(Practice.this);
                 binding.rvQuestions.setLayoutManager(layoutManager);
-                // Hiển thị dữ liệu trong RecyclerView bằng cách sử dụng Adapter
                 Practice_Question_Adapter adapter = new Practice_Question_Adapter( cardList,Practice.this);
                 binding.rvQuestions.setAdapter(adapter);
 

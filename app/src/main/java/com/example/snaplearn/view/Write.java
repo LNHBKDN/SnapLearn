@@ -8,13 +8,17 @@ import androidx.recyclerview.widget.PagerSnapHelper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.WindowManager;
 
 import com.example.snaplearn.R;
 import com.example.snaplearn.databinding.ActivityPracticeBinding;
 import com.example.snaplearn.databinding.ActivityWriteBinding;
 import com.example.snaplearn.model.FlashCard;
+import com.example.snaplearn.viewmodel.CardAdapter;
 import com.example.snaplearn.viewmodel.ItemExamAdapter;
 import com.example.snaplearn.viewmodel.Practice_Question_Adapter;
+import com.example.snaplearn.viewmodel.UpdateCardDialogFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,6 +35,7 @@ public class Write extends AppCompatActivity {
     private DatabaseReference setsReference;
     private FirebaseDatabase database;
     private DatabaseReference listCardRef;
+    private  ItemExamAdapter adapter;
     private List<FlashCard> cardList;
 
     @Override
@@ -44,44 +49,37 @@ public class Write extends AppCompatActivity {
         IdSet = getIntent.getStringExtra("setID");
         database = FirebaseDatabase.getInstance();
         setsReference = database.getReference("users").child(uid).child("sets").child(IdSet);
-        listCardRef = database.getReference("users").child(uid).child("sets").child(IdSet).child("listCard");
-        binding.rvExam.setLayoutManager(new LinearLayoutManager(Write.this));
+        binding.rvExam.setLayoutManager(new LinearLayoutManager(Write.this,LinearLayoutManager.HORIZONTAL, false));
         fetchFlashCardsFromFirebase();
-        PagerSnapHelper psh = new PagerSnapHelper();
-        psh.attachToRecyclerView(binding.rvExam);
+        binding.btnCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String so_cau_dung = String.valueOf(adapter.getSo_cau_dung());
+                Log.d("Check",so_cau_dung);
+            }
+        });
+
     }
     private void fetchFlashCardsFromFirebase() {
-        listCardRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        listCardRef = database.getReference("users").child(uid).child("sets").child(IdSet).child("listCard");
+        listCardRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    // Lấy dữ liệu từ dataSnapshot và đổ vào cardList
-                    cardList.clear();
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        FlashCard flashCard = snapshot.getValue(FlashCard.class);
-                        cardList.add(flashCard);
-                    }
-                    LinearLayoutManager layoutManager = new LinearLayoutManager(Write.this);
-                    binding.rvExam.setLayoutManager(layoutManager);
-                    // Hiển thị dữ liệu trong RecyclerView bằng cách sử dụng Adapter
-                    ItemExamAdapter adapter = new ItemExamAdapter( cardList);
-                    binding.rvExam.setAdapter(adapter);
-                    // Kiểm tra xem dữ liệu đã lấy thành công không
-                    for (FlashCard card : cardList) {
-                        Log.d("CardInfo", "Term: " + card.getTerm() + ", Definition: " + card.getDefinition());
-                    }
-
-                    // Cập nhật adapter sau khi có dữ liệu
-                    adapter.notifyDataSetChanged();
-                } else {
-                    Log.d("FetchData", "Data does not exist");
+                List<com.example.snaplearn.model.FlashCard> cardList = new ArrayList<>();
+                for (DataSnapshot cardSnapshot : dataSnapshot.getChildren()) {
+                    com.example.snaplearn.model.FlashCard card = cardSnapshot.getValue(FlashCard.class);
+                    cardList.add(card);
+                    Log.d("LoadData", card.getTerm());
                 }
-            }
 
-            @Override
+                LinearLayoutManager layoutManager = new LinearLayoutManager(Write.this);
+                binding.rvExam.setLayoutManager(layoutManager);
+                adapter = new ItemExamAdapter( cardList);
+                binding.rvExam.setAdapter(adapter);
+
+            }
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Xử lý khi có lỗi xảy ra
-                Log.e("FetchData", "Error fetching data: " + databaseError.getMessage());
+
             }
         });
     }

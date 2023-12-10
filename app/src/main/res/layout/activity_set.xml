@@ -101,7 +101,7 @@
             android:background="@drawable/custom_background_button"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:text="write"
+            android:text="exam"
             android:fontFamily="sans-serif-black"
             android:textColor="@color/white"
             android:textAllCaps="false"

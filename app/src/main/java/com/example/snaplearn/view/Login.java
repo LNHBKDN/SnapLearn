@@ -72,18 +72,3 @@ public class Login extends AppCompatActivity {
         });
     }
 }
-
-//    // Move the UID retrieval here after successful login
-//    FirebaseUser currentUser = mAuth.getCurrentUser();
-//                                    if (currentUser != null) {
-//                                            String uid = currentUser.getUid();
-//                                            Intent intent = new Intent(Login.this, MainActivity.class);
-//        intent.putExtra("UID", uid);
-//        startActivity(intent);
-//        } else {
-//        // Handle the case where the user is unexpectedly null
-//        Toast.makeText(Login.this, "User is null", Toast.LENGTH_SHORT).show();
-//        }
-//        } else {
-//        Toast.makeText(Login.this, "Wrong username or password", Toast.LENGTH_SHORT).show();
-//        }

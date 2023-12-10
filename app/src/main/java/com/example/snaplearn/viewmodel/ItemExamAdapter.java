@@ -26,6 +26,12 @@ public class ItemExamAdapter extends RecyclerView.Adapter<ItemExamAdapter.IEHold
     private Random random = new Random();
     private int So_cau_dung = 0;
 
+
+    private boolean restart = false;
+    public void setRestart(boolean restart) {
+        this.restart = restart;
+    }
+
     public int getSo_cau_dung() {
         return So_cau_dung;
     }
@@ -46,11 +52,16 @@ public class ItemExamAdapter extends RecyclerView.Adapter<ItemExamAdapter.IEHold
     public void onBindViewHolder(@NonNull IEHolder holder, int position) {
         FlashCard card = cardList.get(position);
         holder.tv_ask.setText(card.getDefinition());
-        holder.rd_group.clearCheck();
-        holder.rdbtn_A.setChecked(false);
-        holder.rdbtn_B.setChecked(false);
-        holder.rdbtn_C.setChecked(false);
-        holder.rdbtn_D.setChecked(false);
+        if(restart == true){
+            So_cau_dung = 0;
+            holder.rd_group.clearCheck();
+            holder.rdbtn_A.setChecked(false);
+            holder.rdbtn_B.setChecked(false);
+            holder.rdbtn_C.setChecked(false);
+            holder.rdbtn_D.setChecked(false);
+            restart = false;
+        }
+
         List<String> allTermsExceptCorrect = new ArrayList<>();
         for (FlashCard flashCard : cardList) {
             if (!flashCard.getTerm().equals(card.getTerm())) {

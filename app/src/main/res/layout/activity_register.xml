@@ -15,9 +15,10 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="@string/register"
-        android:textColor="#1A1A1A"
+        android:textColor="#3B82F6"
         android:textSize="40sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:fontFamily="@font/rubik_bubbles"/>
     
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -28,6 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/username"
+            android:fontFamily="@font/bebas_neue"
             android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
             android:lines="1"
             tools:ignore="TouchTargetSizeCheck"
@@ -44,6 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/email"
+            android:fontFamily="@font/bebas_neue"
             android:inputType="textEmailAddress"
             tools:ignore="TouchTargetSizeCheck"
             android:lines="1"
@@ -64,6 +67,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
             android:hint="@string/password"
+            android:fontFamily="@font/bebas_neue"
             android:inputType="textPassword"
             android:lines="1"
             tools:ignore="TouchTargetSizeCheck" />
@@ -86,6 +90,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
             android:hint="Confirm the password"
+            android:fontFamily="@font/bebas_neue"
             android:inputType="textPassword"
             tools:ignore="TouchTargetSizeCheck"
             android:lines="1"
@@ -101,6 +106,7 @@
         android:backgroundTint="#3B82F6"
         android:outlineAmbientShadowColor="@color/white"
         android:text="@string/register"
+        android:fontFamily="@font/bebas_neue"
         android:textColor="@color/white"
         android:textSize="25dp"
         android:textStyle="bold" />

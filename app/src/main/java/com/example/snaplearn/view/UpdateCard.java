@@ -1,5 +1,7 @@
 package com.example.snaplearn.view;
 
+import static android.view.View.GONE;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +13,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -126,22 +129,22 @@ public class UpdateCard extends AppCompatActivity implements ItemTouchHelperList
                 LinearLayoutManager layoutManager = new LinearLayoutManager(UpdateCard.this);
                 binding.rvCards.setLayoutManager(layoutManager);
                 // Hiển thị dữ liệu trong RecyclerView bằng cách sử dụng Adapter
-                CardAdapter adapter = new CardAdapter( cardList);
+                CardAdapter adapter = new CardAdapter(cardList, uid, setID);
                 binding.rvCards.setAdapter(adapter);
-                adapter.setOnItemClickListener(new CardAdapter.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(FlashCard flashCard) {
-                        // Handle item click here
-                        // Example: Show a Toast with the term of the clicked card
-//                        Toast.makeText(UpdateCard.this, "Clicked: " + flashCard.getTerm(), Toast.LENGTH_SHORT).show();
-                        UpdateCardDialogFragment dialogFragment = UpdateCardDialogFragment.newInstance(flashCard.getID(), flashCard.getIDSet()
-                                                                    ,flashCard.getTerm(), flashCard.getDefinition());
-                        WindowManager.LayoutParams params = window.getAttributes();
-                        params.alpha = 0.5f; // Giảm độ sáng của cửa sổ xuống (ví dụ 0.5 làm cho nó trở nên tối đi)
-                        window.setAttributes(params);
-                        dialogFragment.show(getSupportFragmentManager(), "UpdateCardDialogFragment");
-                    }
-                });
+//                adapter.setOnItemClickListener(new CardAdapter.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(FlashCard flashCard) {
+//                        // Handle item click here
+//                        // Example: Show a Toast with the term of the clicked card
+////                        Toast.makeText(UpdateCard.this, "Clicked: " + flashCard.getTerm(), Toast.LENGTH_SHORT).show();
+//                        UpdateCardDialogFragment dialogFragment = UpdateCardDialogFragment.newInstance(flashCard.getID(), flashCard.getIDSet()
+//                                                                    ,flashCard.getTerm(), flashCard.getDefinition());
+//                        WindowManager.LayoutParams params = window.getAttributes();
+//                        params.alpha = 0.5f; // Giảm độ sáng của cửa sổ xuống (ví dụ 0.5 làm cho nó trở nên tối đi)
+//                        window.setAttributes(params);
+//                        dialogFragment.show(getSupportFragmentManager(), "UpdateCardDialogFragment");
+//                    }
+//                });
             }
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Xử lý lỗi nếu cần

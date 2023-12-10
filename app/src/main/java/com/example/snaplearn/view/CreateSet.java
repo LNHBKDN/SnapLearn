@@ -137,7 +137,7 @@ public class CreateSet extends AppCompatActivity {
                 }
 
                 // Hiển thị dữ liệu trong RecyclerView bằng cách sử dụng Adapter
-                CardAdapter adapter = new CardAdapter( cardList);
+                CardAdapter adapter = new CardAdapter(cardList,uid , IdSet);
                 binding.rvCards.setAdapter(adapter);
             }
             public void onCancelled(@NonNull DatabaseError databaseError) {

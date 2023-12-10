@@ -56,7 +56,6 @@
                 android:layout_height="48dp"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/out_line_ele1"
-                android:enabled="false"
                 android:hint="Term"
                 android:paddingStart="8dp"
                 android:textColor="#E59462" />
@@ -75,7 +74,6 @@
                 android:layout_height="48dp"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/out_line_ele1"
-                android:enabled="false"
                 android:hint="Definition"
                 android:paddingStart="8dp"
                 android:textColor="#E59462" />

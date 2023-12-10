@@ -32,13 +32,10 @@ public class UpdateCardDialogFragment extends DialogFragment {
         // Required empty public constructor
     }
 
-    public static UpdateCardDialogFragment newInstance(String cardId, String setID, String term, String definition) {
+    public static UpdateCardDialogFragment newInstance(String so_cau_dung) {
         UpdateCardDialogFragment fragment = new UpdateCardDialogFragment();
         Bundle args = new Bundle();
-        args.putString("cardId", cardId);
-        args.putString("setID", setID);
-        args.putString("term", term);
-        args.putString("definition", definition);
+        args.putString("so_cau_dung", so_cau_dung);
         fragment.setArguments(args);
         return fragment;
     }
@@ -47,10 +44,7 @@ public class UpdateCardDialogFragment extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            cardId = getArguments().getString("cardId");
-            setID = getArguments().getString("setID");
-            term = getArguments().getString("term");
-            definition = getArguments().getString("definition");
+            term = getArguments().getString("so_cau_dung");
         }
     }
 
@@ -60,21 +54,19 @@ public class UpdateCardDialogFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_update_card, null);
         editTextTerm = view.findViewById(R.id.et_term);
-        editTextDefinition = view.findViewById(R.id.et_definition);
 
         editTextTerm.setText(term);
-        editTextDefinition.setText(definition);
 
         builder.setView(view)
-                .setPositiveButton("Save", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Reset exam", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        String updatedTerm = editTextTerm.getText().toString();
-                        String updatedDefinition = editTextDefinition.getText().toString();
-                        ((UpdateCard) requireActivity()).updateCard(cardId, updatedTerm, updatedDefinition);
+//                        String updatedTerm = editTextTerm.getText().toString();
+//                        String updatedDefinition = editTextDefinition.getText().toString();
+//                        ((UpdateCard) requireActivity()).updateCard(cardId, updatedTerm, updatedDefinition);
                     }
                 })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Confirm", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
                     }

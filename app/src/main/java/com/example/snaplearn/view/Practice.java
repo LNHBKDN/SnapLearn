@@ -72,6 +72,20 @@ public class Practice extends AppCompatActivity implements Practice_Question_Ada
                 binding.rvQuestions.setLayoutManager(layoutManager);
                 Practice_Question_Adapter adapter = new Practice_Question_Adapter( cardList,Practice.this);
                 binding.rvQuestions.setAdapter(adapter);
+//                adapter.setOnItemClickListener(new CardAdapter.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(FlashCard flashCard) {
+//                        // Handle item click here
+//                        // Example: Show a Toast with the term of the clicked card
+////                        Toast.makeText(UpdateCard.this, "Clicked: " + flashCard.getTerm(), Toast.LENGTH_SHORT).show();
+//                        UpdateCardDialogFragment dialogFragment = UpdateCardDialogFragment.newInstance(flashCard.getID(), flashCard.getIDSet()
+//                                ,flashCard.getTerm(), flashCard.getDefinition());
+//                        WindowManager.LayoutParams params = window.getAttributes();
+//                        params.alpha = 0.5f; // Giảm độ sáng của cửa sổ xuống (ví dụ 0.5 làm cho nó trở nên tối đi)
+//                        window.setAttributes(params);
+//                        dialogFragment.show(getSupportFragmentManager(), "UpdateCardDialogFragment");
+//                    }
+//                });
 
             }
             public void onCancelled(@NonNull DatabaseError databaseError) {

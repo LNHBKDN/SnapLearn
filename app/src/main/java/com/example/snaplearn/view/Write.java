@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.snaplearn.R;
@@ -37,6 +38,7 @@ public class Write extends AppCompatActivity {
     private DatabaseReference listCardRef;
     private  ItemExamAdapter adapter;
     private List<FlashCard> cardList;
+    private Window window;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class Write extends AppCompatActivity {
         binding = ActivityWriteBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        window = getWindow();
         Intent getIntent = getIntent();
         uid = getIntent.getStringExtra("UID");
         IdSet = getIntent.getStringExtra("setID");
@@ -56,9 +59,20 @@ public class Write extends AppCompatActivity {
             public void onClick(View v) {
                 String so_cau_dung = String.valueOf(adapter.getSo_cau_dung());
                 Log.d("Check",so_cau_dung);
+                UpdateCardDialogFragment dialogFragment = UpdateCardDialogFragment.newInstance(so_cau_dung);
+                WindowManager.LayoutParams params = window.getAttributes();
+                params.alpha = 0.5f; // Giảm độ sáng của cửa sổ xuống (ví dụ 0.5 làm cho nó trở nên tối đi)
+                window.setAttributes(params);
+                dialogFragment.show(getSupportFragmentManager(), "UpdateCardDialogFragment");
             }
         });
 
+    }
+    private void checkResults() {
+        ItemExamAdapter adapter = (ItemExamAdapter) binding.rvExam.getAdapter();
+        if (adapter != null) {
+            //adapter.checkResults();
+        }
     }
     private void fetchFlashCardsFromFirebase() {
         listCardRef = database.getReference("users").child(uid).child("sets").child(IdSet).child("listCard");

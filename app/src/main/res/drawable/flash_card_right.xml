@@ -12,12 +12,12 @@
             />
         <path
             android:pathData="M0 0V158H335V0"
-            android:fillColor="#33007EC5"
+            android:fillColor="#defde0"
             />
         <path
             android:pathData="M16 0H319C327.837 0 335 7.16344 335 16V142C335 150.837 327.837 158 319 158H16C7.16344 158 0 150.837 0 142V16C0 7.16344 7.16344 0 16 0Z"
-            android:strokeWidth="3"
-            android:strokeColor="#93C5FD"
+            android:strokeWidth="2"
+            android:strokeColor="#d7ecd9"
             />
     </group>
 </vector>

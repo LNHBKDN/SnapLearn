@@ -16,6 +16,7 @@
         <Button
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:id="@+id/btn_back"
             android:layout_marginEnd="300dp"
             android:background="@drawable/button_background"
             android:drawableStart="@drawable/baseline_chevron_left_24"
@@ -34,13 +35,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="NAME"
-            android:textSize="20dp"
+            android:textSize="30dp"
             android:textColor="@color/white"
-            android:fontFamily="sans-serif-black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="@font/be_vietnam_pro_regular"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -72,12 +73,12 @@
             android:layout_height="450dp"
             android:layout_margin="50dp"
             android:background="@drawable/custom_front_card_background"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="@font/be_vietnam_pro_regular"
             android:gravity="center"
             android:text="0"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="25dp"
+            android:textSize="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -152,7 +153,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="@font/bebas_neue"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -3,11 +3,14 @@ package com.example.snaplearn.view;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
 import android.animation.AnimatorInflater;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.snaplearn.R;
@@ -38,6 +41,7 @@ public class FlashCard extends AppCompatActivity {
     private FloatingActionButton btnLeft,btnRight;
     private TextView txtNum,txtSum,txtNameSet;
     TextView front,back;
+    private Button btnBack;
 
 
     @Override
@@ -55,11 +59,16 @@ public class FlashCard extends AppCompatActivity {
         }
 
         float scale = getApplicationContext().getResources().getDisplayMetrics().density;
-
+        btnBack=findViewById(R.id.btn_back);
         txtNum=findViewById(R.id.txtNum);
         txtSum=findViewById(R.id.txtSum);
         txtNameSet=findViewById(R.id.txtNameSet);
-
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         front = (TextView) findViewById(R.id.card_front);
         back = (TextView) findViewById(R.id.card_back);
 
@@ -127,14 +136,29 @@ public class FlashCard extends AppCompatActivity {
                 {
                     if(!isFront)
                     {
+                        int finalNum = num;
+                        back.setText("");
                         frontAnimation.setTarget(back);
                         backAnimation.setTarget(front);
+                        int finalNum1 = num;
+                        backAnimation.addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+                                displayFlashCard(cardList.get(finalNum1 -1));
+                                txtNum.setText(finalNum1+"");
+                            }
+                        });
                         backAnimation.start();
                         frontAnimation.start();
                         isFront = true;
                     }
-                    displayFlashCard(cardList.get(num-1));
-                    txtNum.setText(num+"");
+                    else {
+                        displayFlashCard(cardList.get(num -1));
+                        txtNum.setText(num+"");
+                    }
+
+
                 }
             }
         });
@@ -148,14 +172,27 @@ public class FlashCard extends AppCompatActivity {
                 {
                     if(!isFront)
                     {
+                        int finalNum = num;
+                        back.setText("");
                         frontAnimation.setTarget(back);
                         backAnimation.setTarget(front);
+                        int finalNum1 = num;
+                        backAnimation.addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+                                displayFlashCard(cardList.get(finalNum1 -1));
+                                txtNum.setText(finalNum1+"");
+                            }
+                        });
                         backAnimation.start();
                         frontAnimation.start();
                         isFront = true;
                     }
-                    displayFlashCard(cardList.get(num-1));
-                    txtNum.setText(num+"");
+                    else {
+                        displayFlashCard(cardList.get(num -1));
+                        txtNum.setText(num+"");
+                    }
                 }
             }
         });

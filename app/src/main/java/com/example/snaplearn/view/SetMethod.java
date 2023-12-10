@@ -21,11 +21,11 @@ public class SetMethod extends AppCompatActivity {
         binding = ActivitySetBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-//        Intent getIntent = getIntent();
-//        uid = getIntent.getStringExtra("UID");
-//        setID =getIntent.getStringExtra("idSet");
-        uid = "4pPPfxZrs5YPIPF91wRi3EAC7t72";
-        setID = "-NkQpHDCWrJEUtLwXO3G";
+        Intent getIntent = getIntent();
+        uid = getIntent.getStringExtra("UID");
+        setID =getIntent.getStringExtra("idSet");
+//        uid = "4pPPfxZrs5YPIPF91wRi3EAC7t72";
+//        setID = "-NkQpHDCWrJEUtLwXO3G";
         binding.btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,6 +33,12 @@ public class SetMethod extends AppCompatActivity {
                 intent.putExtra("UID",uid);
                 intent.putExtra("setID",setID);
                 startActivity(intent);
+            }
+        });
+        binding.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
         binding.btnFlashCard.setOnClickListener(new View.OnClickListener() {

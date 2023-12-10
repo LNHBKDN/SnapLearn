@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,13 +23,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder> {
     private static List<FlashCard> cardList;
     private static OnItemClickListener listener;
-    public CardAdapter( List<FlashCard> cardList) {
+    private static String uid;
+    private static String setID;
+
+    public CardAdapter( List<FlashCard> cardList, String uid, String setID) {
         this.cardList = cardList;
+        this.uid = uid;
+        this.setID = setID;
     }
     public interface OnItemClickListener {
         void onItemClick(FlashCard flashCard);
@@ -69,8 +77,39 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         FlashCard card = cardList.get(position);
         holder.edtTerm.setText(card.getTerm());
         holder.edtDefinition.setText(card.getDefinition());
-    }
+        holder.edtTerm.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    String updatedTerm = holder.edtTerm.getText().toString();
 
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+                    // Vị trí cụ thể bạn muốn cập nhật, sử dụng position ở đây
+                    String cardId = card.getID(); // Lấy ID của card tại vị trí position
+                    DatabaseReference listCardRef = database.getReference("users").child(uid).child("sets").child(setID).child("listCard");
+                    // Update dữ liệu trên Firebase Realtime Database
+                    listCardRef.child(cardId).child("term").setValue(updatedTerm);
+                }
+            }
+        });
+        holder.edtDefinition.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    String updatedDef = holder.edtDefinition.getText().toString();
+
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+                    // Vị trí cụ thể bạn muốn cập nhật, sử dụng position ở đây
+                    String cardId = card.getID(); // Lấy ID của card tại vị trí position
+                    DatabaseReference listCardRef = database.getReference("users").child(uid).child("sets").child(setID).child("listCard");
+                    // Update dữ liệu trên Firebase Realtime Database
+                    listCardRef.child(cardId).child("definition").setValue(updatedDef);
+                }
+            }
+        });
+    }
     @Override
     public int getItemCount() {
         return cardList.size();

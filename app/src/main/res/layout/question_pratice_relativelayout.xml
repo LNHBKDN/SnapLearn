@@ -9,8 +9,6 @@
     android:outlineSpotShadowColor="@color/white"
     >
 
-
-
     <LinearLayout
         android:id="@+id/layout_foreground"
         android:layout_width="match_parent"

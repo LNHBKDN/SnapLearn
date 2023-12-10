@@ -1,10 +1,13 @@
 package com.example.snaplearn.viewmodel;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,6 +24,13 @@ import java.util.Random;
 public class ItemExamAdapter extends RecyclerView.Adapter<ItemExamAdapter.IEHolder> {
     private List<FlashCard> cardList;
     private Random random = new Random();
+    private int So_cau_dung = 0;
+
+    public int getSo_cau_dung() {
+        return So_cau_dung;
+    }
+
+    private boolean isCorrectAnswerSelected = false;
 
     public ItemExamAdapter(List<FlashCard> cardList) {
         this.cardList = cardList;
@@ -35,45 +45,75 @@ public class ItemExamAdapter extends RecyclerView.Adapter<ItemExamAdapter.IEHold
     @Override
     public void onBindViewHolder(@NonNull IEHolder holder, int position) {
         FlashCard card = cardList.get(position);
-
-        // Trộn danh sách các từ
-        List<FlashCard> shuffledList = new ArrayList<>(cardList);
-        shuffledList.remove(card);
-        Collections.shuffle(shuffledList);
-
-        // Chọn ngẫu nhiên một vị trí từ danh sách đã được trộn để sử dụng làm câu trả lời đúng
-        int correctAnswerIndex = random.nextInt(4);
-        FlashCard correctAnswer = shuffledList.get(correctAnswerIndex);
-
-        // Hiển thị câu hỏi và đáp án đúng
         holder.tv_ask.setText(card.getDefinition());
-
-        // Hiển thị các đáp án (A, B, C, D) theo thứ tự ngẫu nhiên
-        setRandomAnswer(holder.rdbtn_A, shuffledList.get(0).getTerm(), correctAnswerIndex);
-        setRandomAnswer(holder.rdbtn_B, shuffledList.get(1).getTerm(), correctAnswerIndex);
-        setRandomAnswer(holder.rdbtn_C, shuffledList.get(2).getTerm(), correctAnswerIndex);
-        setRandomAnswer(holder.rdbtn_D, shuffledList.get(3).getTerm(), correctAnswerIndex);
-    }
-    private void setRandomAnswer(RadioButton radioButton, String term, int correctAnswerIndex) {
-        if (random.nextBoolean()) {
-            // Đặt đáp án đúng vào vị trí ngẫu nhiên
-            radioButton.setText(correctAnswerIndex == 0 ? term : getRandomTerm());
-        } else {
-            // Đặt đáp án sai vào vị trí ngẫu nhiên
-            radioButton.setText(getRandomTerm());
+        holder.rd_group.clearCheck();
+        holder.rdbtn_A.setChecked(false);
+        holder.rdbtn_B.setChecked(false);
+        holder.rdbtn_C.setChecked(false);
+        holder.rdbtn_D.setChecked(false);
+        List<String> allTermsExceptCorrect = new ArrayList<>();
+        for (FlashCard flashCard : cardList) {
+            if (!flashCard.getTerm().equals(card.getTerm())) {
+                allTermsExceptCorrect.add(flashCard.getTerm());
+            }
         }
+
+        allTermsExceptCorrect.remove(card.getTerm());
+
+        Collections.shuffle(allTermsExceptCorrect);
+
+        Collections.shuffle(allTermsExceptCorrect);
+
+        List<String> answerChoices = new ArrayList<>();
+        answerChoices.add(allTermsExceptCorrect.get(0));
+        answerChoices.add(allTermsExceptCorrect.get(1));
+        answerChoices.add(allTermsExceptCorrect.get(2));
+        answerChoices.add(allTermsExceptCorrect.get(3));
+        Collections.shuffle(answerChoices);
+
+
+        setAnswerToButton(holder.rdbtn_A, answerChoices.get(0));
+        setAnswerToButton(holder.rdbtn_B, answerChoices.get(1));
+        setAnswerToButton(holder.rdbtn_C, answerChoices.get(2));
+        setAnswerToButton(holder.rdbtn_D, answerChoices.get(3));
+
+
+        List<RadioButton> radioButtons = new ArrayList<>();
+        radioButtons.add(holder.rdbtn_A);
+        radioButtons.add(holder.rdbtn_B);
+        radioButtons.add(holder.rdbtn_C);
+        radioButtons.add(holder.rdbtn_D);
+        Collections.shuffle(radioButtons);
+
+        setCorrectAnswer(radioButtons.get(random.nextInt(4)), card.getTerm());
+
+        holder.rd_group.setOnCheckedChangeListener(null);
+
+        holder.rd_group.setOnCheckedChangeListener((group, checkedId) -> {
+            RadioButton selectedRadioButton = group.findViewById(checkedId);
+            if (selectedRadioButton != null && selectedRadioButton.isChecked()) {
+                String selectedAnswer = selectedRadioButton.getText().toString();
+
+                if (card.getTerm().equals(selectedAnswer)) {
+                    So_cau_dung++;
+                }
+            }
+        });
     }
 
-    private String getRandomTerm() {
-        // Lấy một từ ngẫu nhiên từ danh sách
-        return cardList.get(random.nextInt(cardList.size())).getTerm();
+    private void setCorrectAnswer(RadioButton radioButton, String correctAnswer) {
+        radioButton.setText(correctAnswer);
+    }
+    private void setAnswerToButton(RadioButton radioButton, String answer) {
+        radioButton.setText(answer);
     }
 
     public int getItemCount() {
         return cardList.size();
     }
     public static class IEHolder extends RecyclerView.ViewHolder {
-        private TextView tv_ask;
+        private EditText tv_ask;
+        private RadioGroup rd_group;
         private RadioButton rdbtn_A;
         private RadioButton rdbtn_B;
         private RadioButton rdbtn_C;
@@ -83,10 +123,12 @@ public class ItemExamAdapter extends RecyclerView.Adapter<ItemExamAdapter.IEHold
         public IEHolder(View view) {
             super(view);
             tv_ask = view.findViewById(R.id.tv_ask);
+            rd_group = view.findViewById(R.id.rdio_group);
             rdbtn_A = view.findViewById(R.id.rdbtn_A);
             rdbtn_B = view.findViewById(R.id.rdbtn_B);
             rdbtn_C = view.findViewById(R.id.rdbtn_C);
             rdbtn_D = view.findViewById(R.id.rdbtn_D);
+            layoutForeGround = view.findViewById(R.id.layout_foreground);
         }
     }
 }

@@ -45,10 +45,15 @@
                 android:id="@+id/main_Search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="0dp"
                 android:iconifiedByDefault="false"
                 android:background="@drawable/rectangle_main_search"
                 android:queryHint="Search here"
-                android:fontFamily="@font/bebas_neue"/>
+                android:fontFamily="@font/bebas_neue"
+                android:lines="1"
+                />
 
         </LinearLayout>
 

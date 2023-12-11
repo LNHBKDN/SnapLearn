@@ -35,6 +35,12 @@ public class SetMethod extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        binding.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         binding.btnFlashCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -15,6 +15,7 @@
 
         <Button
             android:layout_width="60dp"
+            android:id="@+id/btn_back"
             android:layout_height="60dp"
             android:layout_marginEnd="300dp"
             android:background="@drawable/button_background"

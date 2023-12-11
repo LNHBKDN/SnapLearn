@@ -3,11 +3,14 @@ package com.example.snaplearn.view;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
 import android.animation.AnimatorInflater;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.snaplearn.R;
@@ -38,6 +41,7 @@ public class FlashCard extends AppCompatActivity {
     private FloatingActionButton btnLeft,btnRight;
     private TextView txtNum,txtSum,txtNameSet;
     TextView front,back;
+    private Button btnBack;
 
 
     @Override
@@ -62,7 +66,13 @@ public class FlashCard extends AppCompatActivity {
 
         front = (TextView) findViewById(R.id.card_front);
         back = (TextView) findViewById(R.id.card_back);
-
+        btnBack=findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         front.setCameraDistance(8000 * scale);
         back.setCameraDistance(8000 * scale);
 
@@ -127,13 +137,25 @@ public class FlashCard extends AppCompatActivity {
                 {
                     if(!isFront)
                     {
+                        back.setText("");
                         frontAnimation.setTarget(back);
                         backAnimation.setTarget(front);
+                        int finalNum = num;
+                        backAnimation.addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+                                displayFlashCard(cardList.get(finalNum -1));
+                            }
+                        });
                         backAnimation.start();
                         frontAnimation.start();
                         isFront = true;
                     }
-                    displayFlashCard(cardList.get(num-1));
+                    else {
+                        displayFlashCard(cardList.get(num-1));
+                    }
+
                     txtNum.setText(num+"");
                 }
             }
@@ -148,13 +170,25 @@ public class FlashCard extends AppCompatActivity {
                 {
                     if(!isFront)
                     {
+                        back.setText("");
                         frontAnimation.setTarget(back);
                         backAnimation.setTarget(front);
+                        int finalNum = num;
+                        backAnimation.addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+                                displayFlashCard(cardList.get(finalNum -1));
+                            }
+                        });
                         backAnimation.start();
                         frontAnimation.start();
                         isFront = true;
                     }
-                    displayFlashCard(cardList.get(num-1));
+                    else {
+                        displayFlashCard(cardList.get(num-1));
+                    }
+
                     txtNum.setText(num+"");
                 }
             }

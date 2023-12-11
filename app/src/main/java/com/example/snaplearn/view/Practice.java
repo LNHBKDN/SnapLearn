@@ -8,9 +8,11 @@ import androidx.recyclerview.widget.PagerSnapHelper;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 import com.example.snaplearn.R;
 import com.example.snaplearn.databinding.ActivityCreateSetBinding;
@@ -42,7 +44,13 @@ public class Practice extends AppCompatActivity implements Practice_Question_Ada
         super.onCreate(savedInstanceState);
         binding = ActivityPracticeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        ImageView img=findViewById(R.id.btn_praticeback);
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         Intent getIntent = getIntent();
         uid = getIntent.getStringExtra("UID");
         IdSet = getIntent.getStringExtra("setID");

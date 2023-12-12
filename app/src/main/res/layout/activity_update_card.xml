@@ -7,6 +7,7 @@
     tools:context=".view.CreateSet">
 
     <LinearLayout
+        android:id="@+id/root_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -21,12 +22,11 @@
             android:layout_marginLeft="10dp"
             android:text="Name"
             android:textColor="#3B82F6"
-            android:textSize="25sp"
-            android:fontFamily="@font/bebas_neue"/>
+            android:textSize="25sp" />
 
         <EditText
             android:id="@+id/editText_nameSet"
-            android:layout_width="363dp"
+            android:layout_width="345dp"
             android:layout_height="48dp"
             android:layout_marginLeft="10dp"
             android:background="@drawable/out_line_ele1"
@@ -40,12 +40,11 @@
             android:layout_marginLeft="10dp"
             android:text="Description"
             android:textColor="#3B82F6"
-            android:textSize="25sp"
-            android:fontFamily="@font/bebas_neue"/>
+            android:textSize="25sp" />
 
         <EditText
             android:id="@+id/editText_description"
-            android:layout_width="363dp"
+            android:layout_width="345dp"
             android:layout_height="48dp"
             android:layout_marginLeft="10dp"
             android:background="@drawable/out_line_ele1"
@@ -59,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="Term"
-            android:fontFamily="@font/bebas_neue"
+
             android:textColor="#3B82F6"
             android:textSize="25sp" />
 
@@ -79,8 +78,7 @@
             android:layout_marginLeft="20dp"
             android:text="Definition"
             android:textColor="#3B82F6"
-            android:textSize="25sp"
-            android:fontFamily="@font/bebas_neue"/>
+            android:textSize="25sp" />
 
         <EditText
             android:id="@+id/editText_definition"

@@ -1,5 +1,7 @@
 package com.example.snaplearn.view;
 
+import static android.view.View.GONE;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,12 +9,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -93,14 +97,34 @@ public class CreateSet extends AppCompatActivity {
         binding.editTextDefinition.setVisibility(View.GONE);
         binding.btnAddCard.setVisibility(View.GONE);
         binding.tvTerm.setVisibility(View.GONE);
-        binding.tvTerm.setVisibility(View.GONE);
+        binding.tvDef.setVisibility(View.GONE);
         binding.btnCreateSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String Name = binding.editTextNameSet.getText().toString();
                 String Description = binding.editTextDescription.getText().toString();
-                addSet(Name, Description);
+                if(!Name.isEmpty() && !Description.isEmpty()){
+                    addSet(Name, Description);
+                    binding.rootLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                        @Override
+                        public void onGlobalLayout() {
+                            Rect r = new Rect();
+                            binding.rootLayout.getWindowVisibleDisplayFrame(r);
+                            int screenHeight = binding.rootLayout.getRootView().getHeight();
 
+                            // Tính toán kích thước bàn phím bằng cách so sánh chiều cao thực của màn hình với chiều cao hiển thị
+                            int keypadHeight = screenHeight - r.bottom;
+
+                            if (keypadHeight > screenHeight * 0.15) {
+                                binding.btnAddCard.setVisibility(GONE);
+                            } else {
+                                binding.btnAddCard.setVisibility(View.VISIBLE);
+                            }
+                        }
+                    });
+                }else{
+                    Toast.makeText(CreateSet.this,"Name and Description must be filled in",Toast.LENGTH_SHORT).show();
+                }
             }
         });
         binding.btnAddCard.setOnClickListener(new View.OnClickListener() {
@@ -108,7 +132,12 @@ public class CreateSet extends AppCompatActivity {
             public void onClick(View v) {
                 String term = binding.editTextTerm.getText().toString();
                 String definition = binding.editTextDefinition.getText().toString();
-                addCard(term, definition);
+
+                if(!term.isEmpty() && !definition.isEmpty()){
+                    addCard(term, definition);
+                }else{
+                    Toast.makeText(CreateSet.this,"Term and Definition must be filled in",Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

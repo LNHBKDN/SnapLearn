@@ -1,5 +1,7 @@
 package com.example.snaplearn.view;
 
+import static android.view.View.GONE;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -8,12 +10,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
@@ -82,7 +86,23 @@ public class MainActivity extends AppCompatActivity implements SetAdapter.SetCli
         });
         ItemTouchHelper.SimpleCallback simpleCallback = new RecylerViewItemTouchHelper(0,ItemTouchHelper.LEFT,this);
         new ItemTouchHelper(simpleCallback).attachToRecyclerView(binding.rvSet);
+        binding.rootLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                Rect r = new Rect();
+                binding.rootLayout.getWindowVisibleDisplayFrame(r);
+                int screenHeight = binding.rootLayout.getRootView().getHeight();
 
+                // Tính toán kích thước bàn phím bằng cách so sánh chiều cao thực của màn hình với chiều cao hiển thị
+                int keypadHeight = screenHeight - r.bottom;
+
+                if (keypadHeight > screenHeight * 0.15) {
+                    binding.btnAddSet.setVisibility(GONE);
+                } else {
+                    binding.btnAddSet.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
     }
     private void setupRV(FirebaseRecyclerOptions<Set> options){

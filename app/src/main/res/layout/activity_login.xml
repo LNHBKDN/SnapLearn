@@ -7,9 +7,11 @@
     android:orientation="vertical"
     android:padding="15dp"
     android:layout_gravity="center"
-    tools:context=".view.Login">
+    tools:context=".view.Login"
+    android:background="#dbe2e9">
 
     <ImageView
+        android:layout_marginTop="15mm"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:src="@drawable/avatar"/>

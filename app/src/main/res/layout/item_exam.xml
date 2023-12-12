@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="777dp"
-    android:background="@drawable/frame_15"
-    android:padding="10dp"
-    >
+    android:layout_height="match_parent"
+    android:background="@drawable/frame_15">
     <LinearLayout
         android:id="@+id/layout_question"
         android:layout_width="match_parent"
@@ -14,8 +12,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="definition"
-            android:fontFamily="@font/bebas_neue"
+            android:text="Definition"
             android:textStyle="bold"
             android:textSize="30dp"
             android:paddingTop="8dp"></TextView>
@@ -27,7 +24,7 @@
             android:textSize="35dp"
             android:paddingTop="10dp"
             android:enabled="false"
-            android:fontFamily="@font/be_vietnam_pro_regular"
+            android:textColor="#3399ff"
             ></EditText>
         <TextView
             android:layout_width="match_parent"
@@ -35,8 +32,7 @@
             android:text="Choose the right answer:"
             android:textSize="30dp"
             android:textStyle="bold"
-            android:paddingTop="25mm"
-            android:fontFamily="@font/bebas_neue"
+            android:paddingTop="30mm"
             ></TextView>
     </LinearLayout>
     <RelativeLayout
@@ -49,8 +45,7 @@
         <RadioGroup
             android:id="@+id/rdio_group"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
             <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/rdbtn_A"
                 android:layout_width="wrap_content"
@@ -66,7 +61,6 @@
                 android:text="Dap An B"
                 android:layout_marginTop="30dp"
                 android:textSize="40dp"
-                android:fontFamily="@font/bebas_neue"
                 style="@style/Widget.AppCompat.CompoundButton.CheckBox"></com.google.android.material.radiobutton.MaterialRadioButton>
             <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/rdbtn_C"
@@ -75,7 +69,6 @@
                 android:text="Dap An C"
                 android:layout_marginTop="30dp"
                 android:textSize="40dp"
-                android:fontFamily="@font/bebas_neue"
                 style="@style/Widget.AppCompat.CompoundButton.CheckBox"></com.google.android.material.radiobutton.MaterialRadioButton>
             <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/rdbtn_D"
@@ -84,7 +77,6 @@
                 android:text="Dap An D"
                 android:layout_marginTop="30dp"
                 android:textSize="40dp"
-                android:fontFamily="@font/bebas_neue"
                 style="@style/Widget.AppCompat.CompoundButton.CheckBox"></com.google.android.material.radiobutton.MaterialRadioButton>
         </RadioGroup>
     </RelativeLayout>

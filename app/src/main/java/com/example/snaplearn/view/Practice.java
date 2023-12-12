@@ -58,12 +58,12 @@ public class Practice extends AppCompatActivity implements Practice_Question_Ada
         setsReference = database.getReference("users").child(uid).child("sets").child(IdSet);
         binding.rvQuestions.setLayoutManager(new LinearLayoutManager(Practice.this));
         loadRV();
-        binding.btnCheckResult.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkResults();
-            }
-        });
+//        binding.btnCheckResult.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                checkResults();
+//            }
+//        });
     }
     public void loadRV(){
         listCardRef = database.getReference("users").child(uid).child("sets").child(IdSet).child("listCard");

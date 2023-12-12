@@ -36,7 +36,6 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/bebas_neue"
             android:gravity="center"
             android:text="Set"
             android:textAllCaps="false"
@@ -55,9 +54,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Practice make perfect"
+            android:text="PRACTICE MAKES PERFECT"
             android:textSize="26dp"
-            android:layout_marginLeft="26dp"
+            android:layout_marginLeft="35dp"
             android:textColor="#3B82F6"
             android:gravity="center_vertical"
             android:fontFamily="sans-serif-black"
@@ -74,7 +73,7 @@
             android:background="@drawable/custom_background_button"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:text="flashcards"
+            android:text="Flashcards"
             android:textColor="@color/white"
             android:textAllCaps="false"
             android:textSize="23dp"
@@ -82,7 +81,7 @@
             android:layout_marginBottom="5dp"
             android:drawableStart="@drawable/card_icon"
             android:paddingHorizontal="100dp"
-            android:fontFamily="@font/bebas_neue"
+
             ></Button>
     </LinearLayout>
     <LinearLayout
@@ -97,7 +96,7 @@
             android:background="@drawable/custom_background_button"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:text="practice"
+            android:text="Practice"
             android:textColor="@color/white"
             android:textAllCaps="false"
             android:textSize="23dp"
@@ -105,7 +104,7 @@
             android:layout_marginBottom="5dp"
             android:drawableStart="@drawable/icon_goal"
             android:paddingHorizontal="100dp"
-            android:fontFamily="@font/bebas_neue"
+
             ></Button>
     </LinearLayout>
     <LinearLayout
@@ -119,7 +118,7 @@
             android:background="@drawable/custom_background_button"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:text="exam"
+            android:text="Exam"
             android:textColor="@color/white"
             android:textAllCaps="false"
             android:textSize="23dp"
@@ -127,7 +126,6 @@
             android:layout_marginBottom="5dp"
             android:drawableStart="@drawable/icon_write"
             android:paddingHorizontal="100dp"
-            android:fontFamily="@font/bebas_neue"
             ></Button>
     </LinearLayout>
     <LinearLayout
@@ -141,7 +139,7 @@
             android:background="@drawable/custom_background_button"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:text="update"
+            android:text="Update"
             android:textColor="@color/white"
             android:textAllCaps="false"
             android:textSize="23dp"
@@ -149,7 +147,6 @@
             android:layout_marginBottom="5dp"
             android:drawableStart="@drawable/baseline_edit_note_24"
             android:paddingHorizontal="100dp"
-            android:fontFamily="@font/bebas_neue"
             ></Button>
     </LinearLayout>
 </LinearLayout>

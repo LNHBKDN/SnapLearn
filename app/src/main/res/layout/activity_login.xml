@@ -4,22 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="20dp"
-    android:layout_gravity="center"
     android:orientation="vertical"
     android:padding="15dp"
+    android:layout_gravity="center"
     tools:context=".view.Login">
 
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="230dp"/>
+        android:layout_height="250dp"
+        android:src="@drawable/avatar"/>
+
     <TextView
         android:id="@+id/reg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/rubik_bubbles"
         android:gravity="center_horizontal"
+        android:paddingTop="30dp"
         android:text="Welcome Back"
-        android:textColor="#1A1A1A"
+        android:textColor="#3B82F6"
         android:textSize="40sp"
         android:textStyle="bold" />
 
@@ -35,7 +38,8 @@
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:lines="1"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck"
+            android:fontFamily="@font/be_vietnam_pro_regular"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -51,7 +55,8 @@
             android:hint="@string/password"
             tools:ignore="TouchTargetSizeCheck"
             android:inputType="textPassword"
-            android:lines="1"/>
+            android:lines="1"
+            android:fontFamily="@font/be_vietnam_pro_regular"/>
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -66,7 +71,8 @@
         android:text="@string/login"
         android:textColor="@color/white"
         android:textSize="25dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:fontFamily="@font/bebas_neue"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -74,10 +80,12 @@
         android:orientation="horizontal">
 
         <TextView
+            android:paddingStart="45dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/don_t_have_an_account"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:fontFamily="@font/bebas_neue"/>
 
         <TextView
             android:id="@+id/tv_reg"
@@ -89,6 +97,7 @@
             android:textColor="#1A1A1A"
             android:textSize="25dp"
             android:textStyle="bold"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck"
+            android:fontFamily="@font/bebas_neue"/>
     </LinearLayout>
 </LinearLayout>

@@ -21,15 +21,17 @@
             android:layout_marginLeft="10dp"
             android:text="Name"
             android:textColor="#3B82F6"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:fontFamily="@font/bebas_neue"/>
 
         <EditText
             android:id="@+id/editText_nameSet"
-            android:layout_width="374dp"
+            android:layout_width="363dp"
             android:layout_height="48dp"
             android:layout_marginLeft="10dp"
             android:background="@drawable/out_line_ele1"
             android:hint="Name"
+            android:fontFamily="@font/be_vietnam_pro_regular"
             android:paddingStart="8dp" />
 
         <TextView
@@ -38,15 +40,17 @@
             android:layout_marginLeft="10dp"
             android:text="Description"
             android:textColor="#3B82F6"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:fontFamily="@font/bebas_neue"/>
 
         <EditText
             android:id="@+id/editText_description"
-            android:layout_width="374dp"
+            android:layout_width="363dp"
             android:layout_height="48dp"
             android:layout_marginLeft="10dp"
             android:background="@drawable/out_line_ele1"
             android:hint="Description"
+            android:fontFamily="@font/be_vietnam_pro_regular"
             android:paddingStart="8dp" />
 
 
@@ -55,15 +59,17 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="Term"
+            android:fontFamily="@font/bebas_neue"
             android:textColor="#3B82F6"
             android:textSize="25sp" />
 
         <EditText
             android:id="@+id/editText_term"
-            android:layout_width="362dp"
+            android:layout_width="332dp"
             android:layout_height="48dp"
             android:layout_marginLeft="20dp"
             android:background="@drawable/out_line_ele1"
+            android:fontFamily="@font/be_vietnam_pro_regular"
             android:hint="Term"
             android:paddingStart="8dp" />
 
@@ -73,14 +79,16 @@
             android:layout_marginLeft="20dp"
             android:text="Definition"
             android:textColor="#3B82F6"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:fontFamily="@font/bebas_neue"/>
 
         <EditText
             android:id="@+id/editText_definition"
-            android:layout_width="361dp"
+            android:layout_width="332dp"
             android:layout_height="48dp"
             android:layout_marginLeft="20dp"
             android:background="@drawable/out_line_ele1"
+            android:fontFamily="@font/be_vietnam_pro_regular"
             android:hint="Definition"
             android:paddingStart="8dp" />
 

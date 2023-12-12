@@ -1,34 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/frame_15">
     <LinearLayout
         android:id="@+id/layout_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="15dp">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Định nghĩa"
+            android:text="definition"
+            android:fontFamily="@font/bebas_neue"
             android:textStyle="bold"
-            android:textSize="30dp"></TextView>
+            android:textSize="30dp"
+            android:paddingTop="8dp"></TextView>
         <EditText
             android:id="@+id/tv_ask"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Caau hoi"
             android:textSize="35dp"
-            android:paddingTop="40dp"
+            android:paddingTop="10dp"
             android:enabled="false"
+            android:fontFamily="@font/be_vietnam_pro_regular"
             ></EditText>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Chọn đáp án đúng:"
+            android:text="Choose the right answer:"
             android:textSize="30dp"
             android:textStyle="bold"
-            android:paddingTop="40mm"
+            android:paddingTop="35mm"
+            android:fontFamily="@font/bebas_neue"
             ></TextView>
     </LinearLayout>
     <RelativeLayout
@@ -42,33 +48,41 @@
             android:id="@+id/rdio_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <RadioButton
+            <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/rdbtn_A"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dap an A"
-                android:textSize="40dp"></RadioButton>
-            <RadioButton
+                android:textSize="40dp"
+                android:fontFamily="@font/bebas_neue"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"></com.google.android.material.radiobutton.MaterialRadioButton>
+            <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/rdbtn_B"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dap An B"
                 android:layout_marginTop="30dp"
-                android:textSize="40dp"></RadioButton>
-            <RadioButton
+                android:textSize="40dp"
+                android:fontFamily="@font/bebas_neue"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"></com.google.android.material.radiobutton.MaterialRadioButton>
+            <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/rdbtn_C"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dap An C"
                 android:layout_marginTop="30dp"
-                android:textSize="40dp"></RadioButton>
-            <RadioButton
+                android:textSize="40dp"
+                android:fontFamily="@font/bebas_neue"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"></com.google.android.material.radiobutton.MaterialRadioButton>
+            <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/rdbtn_D"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dap An D"
                 android:layout_marginTop="30dp"
-                android:textSize="40dp"></RadioButton>
+                android:textSize="40dp"
+                android:fontFamily="@font/bebas_neue"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"></com.google.android.material.radiobutton.MaterialRadioButton>
         </RadioGroup>
     </RelativeLayout>
 </RelativeLayout>

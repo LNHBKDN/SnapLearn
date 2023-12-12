@@ -29,14 +29,14 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Write extends AppCompatActivity {
+public class Write extends AppCompatActivity implements UpdateCardDialogFragment.ResetExamListener {
     private ActivityWriteBinding binding;
     private String IdSet;
     private String uid;
     private DatabaseReference setsReference;
     private FirebaseDatabase database;
     private DatabaseReference listCardRef;
-    private  ItemExamAdapter adapter;
+    private ItemExamAdapter adapter;
     private List<FlashCard> cardList;
     private Window window;
 
@@ -58,8 +58,10 @@ public class Write extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String so_cau_dung = String.valueOf(adapter.getSo_cau_dung());
+                String so_cau = String.valueOf(adapter.getItemCount());
                 Log.d("Check",so_cau_dung);
-                UpdateCardDialogFragment dialogFragment = UpdateCardDialogFragment.newInstance(so_cau_dung);
+                UpdateCardDialogFragment dialogFragment = UpdateCardDialogFragment.newInstance(so_cau_dung,so_cau);
+                dialogFragment.setResetExamListener(Write.this);
                 WindowManager.LayoutParams params = window.getAttributes();
                 params.alpha = 0.5f; // Giảm độ sáng của cửa sổ xuống (ví dụ 0.5 làm cho nó trở nên tối đi)
                 window.setAttributes(params);
@@ -67,12 +69,6 @@ public class Write extends AppCompatActivity {
             }
         });
 
-    }
-    private void checkResults() {
-        ItemExamAdapter adapter = (ItemExamAdapter) binding.rvExam.getAdapter();
-        if (adapter != null) {
-            //adapter.checkResults();
-        }
     }
     private void fetchFlashCardsFromFirebase() {
         listCardRef = database.getReference("users").child(uid).child("sets").child(IdSet).child("listCard");
@@ -84,6 +80,7 @@ public class Write extends AppCompatActivity {
                     com.example.snaplearn.model.FlashCard card = cardSnapshot.getValue(FlashCard.class);
                     cardList.add(card);
                     Log.d("LoadData", card.getTerm());
+
                 }
 
                 LinearLayoutManager layoutManager = new LinearLayoutManager(Write.this);
@@ -96,5 +93,10 @@ public class Write extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onResetExam() {
+        fetchFlashCardsFromFirebase();
     }
 }

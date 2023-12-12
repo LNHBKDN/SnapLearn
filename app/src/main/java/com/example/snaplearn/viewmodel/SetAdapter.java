@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -107,8 +108,8 @@ public class SetAdapter extends FirebaseRecyclerAdapter<Set, SetAdapter.SetHolde
     }
 
     public static class SetHolder extends RecyclerView.ViewHolder {
-        private EditText edtName;
-        private EditText edtDec;
+        private TextView edtName;
+        private TextView edtDec;
         protected LinearLayout layoutForeGround;
 
         public SetHolder(View view) {

@@ -13,11 +13,14 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
 
-        <include layout="@layout/create_set_toolbar" />
+        <include
+            android:id="@+id/create_settoolbar"
+            layout="@layout/create_set_toolbar" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="8dp">
+            android:paddingTop="12dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextNameSet"
@@ -28,6 +31,7 @@
                 tools:ignore="TouchTargetSizeCheck"
                 android:inputType="text"
                 android:paddingStart="8dp"
+                android:fontFamily="@font/be_vietnam_pro_regular"
                 android:lines="1"/>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -35,7 +39,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="8dp">
+            android:paddingTop="12dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextDescription"
@@ -43,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/out_line_ele1"
                 android:hint="Description"
+                android:fontFamily="@font/be_vietnam_pro_regular"
                 tools:ignore="TouchTargetSizeCheck"
                 android:paddingStart="8dp"
                 android:inputType="text"
@@ -55,14 +60,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"
-            android:text="Create Set" />
-
+            android:text="Create Set"
+            android:fontFamily="@font/bebas_neue"
+        />
         <TextView
             android:id="@+id/tv_term"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="Term"
+            android:fontFamily="@font/bebas_neue"
             android:textColor="#3B82F6"
             android:textSize="25sp" />
 
@@ -73,6 +80,7 @@
             android:layout_marginLeft="20dp"
             android:background="@drawable/out_line_ele1"
             android:hint="Term"
+            android:fontFamily="@font/be_vietnam_pro_regular"
             android:paddingStart="8dp" />
 
         <TextView
@@ -81,6 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="Definition"
+            android:fontFamily="@font/bebas_neue"
             android:textColor="#3B82F6"
             android:textSize="25sp" />
 
@@ -92,6 +101,7 @@
             android:layout_marginLeft="20dp"
             android:background="@drawable/out_line_ele1"
             android:hint="Definition"
+            android:fontFamily="@font/be_vietnam_pro_regular"
             android:paddingStart="8dp" />
 
         <androidx.recyclerview.widget.RecyclerView

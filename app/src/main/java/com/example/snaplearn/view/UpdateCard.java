@@ -11,10 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -98,7 +100,11 @@ public class UpdateCard extends AppCompatActivity implements ItemTouchHelperList
             public void onClick(View v) {
                 String term = binding.editTextTerm.getText().toString();
                 String definition = binding.editTextDefinition.getText().toString();
-                addCard(term, definition);
+                if(!term.isEmpty() && !definition.isEmpty()){
+                    addCard(term, definition);
+                }else{
+                    Toast.makeText(UpdateCard.this,"Term and Definition must be filled in",Toast.LENGTH_SHORT).show();
+                }
             }
         });
         binding.btnConfirm.setOnClickListener(new View.OnClickListener() {
@@ -106,12 +112,35 @@ public class UpdateCard extends AppCompatActivity implements ItemTouchHelperList
             public void onClick(View v) {
                 String nameSet = binding.editTextNameSet.getText().toString();
                 String description = binding.editTextDescription.getText().toString();
-                updateSet(nameSet, description);
+                if(!nameSet.isEmpty() && !description.isEmpty()){
+                    updateSet(nameSet, description);
+                }else{
+                    Toast.makeText(UpdateCard.this,"Name and Description must be filled in",Toast.LENGTH_SHORT).show();
+                }
                 onBackPressed();
             }
         });
         ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new RVItemHelperListenerCard(0,ItemTouchHelper.LEFT,this);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(binding.rvCards);
+        binding.rootLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                Rect r = new Rect();
+                binding.rootLayout.getWindowVisibleDisplayFrame(r);
+                int screenHeight = binding.rootLayout.getRootView().getHeight();
+
+                // Tính toán kích thước bàn phím bằng cách so sánh chiều cao thực của màn hình với chiều cao hiển thị
+                int keypadHeight = screenHeight - r.bottom;
+
+                if (keypadHeight > screenHeight * 0.15) {
+                    binding.btnAddCard.setVisibility(GONE);
+                    binding.btnConfirm.setVisibility(GONE);
+                } else {
+                    binding.btnAddCard.setVisibility(View.VISIBLE);
+                    binding.btnConfirm.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
     }
 
@@ -242,5 +271,6 @@ public class UpdateCard extends AppCompatActivity implements ItemTouchHelperList
                     }
                 });
     }
+
 
 }

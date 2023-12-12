@@ -54,7 +54,7 @@ public class UpdateCardDialogFragment extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            term = "Số câu đúng" + getArguments().getString("so_cau_dung")+ "/"
+            term = "Số câu đúng " + getArguments().getString("so_cau_dung")+ "/"
                     +getArguments().getString("so_cau");
         }
     }

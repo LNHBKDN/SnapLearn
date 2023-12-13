@@ -25,14 +25,14 @@
             android:paddingBottom="10dp">
             <TextView
                 android:id="@+id/snaplearn"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SnapLearn"
-                android:textSize="45dp"
+                android:textSize="40dp"
                 android:textColor="@color/white"
-                android:layout_marginTop="34dp"
+                android:layout_marginTop="30dp"
                 android:textStyle="bold"
-                android:layout_marginLeft="24dp"
+                android:layout_marginLeft="25dp"
                 />
         </LinearLayout>
 
@@ -82,7 +82,10 @@
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="29dp"
         android:clickable="true"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        android:backgroundTint="#9BBEC8"
+        app:borderWidth="0dp"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/baseline_add_24" />
 
 
 

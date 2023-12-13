@@ -125,10 +125,12 @@ public class UpdateCardDialogFragment extends DialogFragment {
 //                        dialog.dismiss();
 //                    }
 //                });
-
-        builder.setView(view);
-
-        return builder.create();
+//        builder.setView(view);
+//
+//        return builder.create();
+        Dialog dialog = builder.setView(view).create();
+        dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_window);
+        return dialog;
     }
     @Override
     public void onDismiss(DialogInterface dialog) {

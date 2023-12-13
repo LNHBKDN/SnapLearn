@@ -14,7 +14,9 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
 
-<!--        <include layout="@layout/create_set_toolbar" />-->
+        <include
+            android:id="@+id/update_cardtoolbar"
+            layout="@layout/update_card_toolbar" />
 
         <TextView
             android:layout_width="match_parent"

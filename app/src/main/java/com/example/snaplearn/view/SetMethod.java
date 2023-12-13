@@ -64,21 +64,59 @@ public class SetMethod extends AppCompatActivity {
         binding.btnFlashCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(SetMethod.this, FlashCard.class);
+                listCardRef = database.getReference("users").child(uid).child("sets").child(setID).child("listCard");
+                listCardRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        int cardSize = (int) dataSnapshot.getChildrenCount();
 
-                intent.putExtra("UID",uid);
-                intent.putExtra("setID",setID);
-                startActivity(intent);
+                        Log.d("card_size", String.valueOf(cardSize));
+
+                        if (cardSize < 4) {
+                            showToast("You need at least 4 flashcards to proceed.");
+                        } else {
+                            Intent intent=new Intent(SetMethod.this, FlashCard.class);
+
+                            intent.putExtra("UID",uid);
+                            intent.putExtra("setID",setID);
+                            startActivity(intent);
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        // Xử lý lỗi nếu cần
+                    }
+                });
+
             }
         });
         binding.btnPratice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(SetMethod.this, Practice.class);
+                listCardRef = database.getReference("users").child(uid).child("sets").child(setID).child("listCard");
+                listCardRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        int cardSize = (int) dataSnapshot.getChildrenCount();
 
-                intent.putExtra("UID",uid);
-                intent.putExtra("setID",setID);
-                startActivity(intent);
+                        Log.d("card_size", String.valueOf(cardSize));
+
+                        if (cardSize < 4) {
+                            showToast("You need at least 4 flashcards to proceed.");
+                        } else {
+                            Intent intent=new Intent(SetMethod.this, Practice.class);
+
+                            intent.putExtra("UID",uid);
+                            intent.putExtra("setID",setID);
+                            startActivity(intent);
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        // Xử lý lỗi nếu cần
+                    }
+                });
+
             }
         });
         binding.btnWrite.setOnClickListener(new View.OnClickListener() {

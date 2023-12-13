@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.snaplearn.R;
@@ -75,6 +76,13 @@ public class UpdateCard extends AppCompatActivity implements ItemTouchHelperList
         setsReference = database.getReference("users").child(uid).child("sets").child(setID);
         binding.rvCards.setLayoutManager(new LinearLayoutManager(UpdateCard.this));
         window = getWindow();
+        ImageView img=findViewById(R.id.btn_updateback);
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         setsReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

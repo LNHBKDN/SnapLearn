@@ -101,7 +101,7 @@
         android:id="@+id/btn_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#3B82F6"
+        android:background="@drawable/ripple_button"
         android:outlineAmbientShadowColor="@color/white"
         android:text="@string/register"
         android:textColor="@color/white"

@@ -52,7 +52,6 @@
                 android:layout_height="wrap_content"
                 android:text="Dap an A"
                 android:textSize="40dp"
-                android:fontFamily="@font/bebas_neue"
                 style="@style/Widget.AppCompat.CompoundButton.CheckBox"></com.google.android.material.radiobutton.MaterialRadioButton>
             <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/rdbtn_B"

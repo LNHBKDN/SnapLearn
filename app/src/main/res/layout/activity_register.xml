@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="15dp"
-    tools:context=".view.Register">
+    tools:context=".view.Register"
+    android:background="#dbe2e9">
 
     <TextView
         android:id="@+id/reg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30mm"
         android:gravity="center_horizontal"
         android:text="@string/register"
         android:textColor="#3B82F6"
@@ -83,11 +83,35 @@
         android:id="@+id/btn_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:backgroundTint="#3B82F6"
+        android:background="@drawable/ripple_button"
         android:outlineAmbientShadowColor="@color/white"
         android:text="@string/register"
         android:textColor="@color/white"
         android:textSize="25dp"
         android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:paddingStart="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/already_have_a_account"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/tv_login"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:onClick="register"
+            android:text="@string/login"
+            android:textColor="#1A1A1A"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            tools:ignore="TouchTargetSizeCheck" />
+    </LinearLayout>
 </LinearLayout>

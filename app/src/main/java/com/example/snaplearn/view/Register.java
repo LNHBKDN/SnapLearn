@@ -18,6 +18,7 @@ public class Register extends AppCompatActivity {
 
     TextInputEditText editTextEmail;
     TextInputEditText editTextPassword;
+    TextInputEditText reEditTextPassword;
     Button buttonReg;
     FirebaseAuth mAuth;
 
@@ -39,21 +40,28 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
+        reEditTextPassword = findViewById(R.id.repassword);
         buttonReg = findViewById(R.id.btn_register);
 
         buttonReg.setOnClickListener(v -> {
-            String email, password;
+            String email, password, rePassword;
             email = String.valueOf(editTextEmail.getText());
             password = String.valueOf(editTextPassword.getText());
+            rePassword = String.valueOf(reEditTextPassword.getText());
 
             if (TextUtils.isEmpty(email)) {
 //                Toast.makeText(Register.this, "Plz Enter Email?", Toast.LENGTH_SHORT).show();
-                editTextEmail.setError("You must fill the email field or imma kick ur ass");
+                editTextEmail.setError("You must fill the email field");
                 return;
             }
             if (TextUtils.isEmpty(password)) {
                 //Toast.makeText(Register.this, "Plz Enter Password?", Toast.LENGTH_SHORT).show();
-                editTextPassword.setError("You must fill the email field or imma kick ur ass");
+                editTextPassword.setError("You must fill the email field");
+                return;
+            }
+            if (TextUtils.isEmpty(rePassword) || !rePassword.equals(password)) {
+                //Toast.makeText(Register.this, "Plz Enter Password?", Toast.LENGTH_SHORT).show();
+                reEditTextPassword.setError("Re-confirm the password");
                 return;
             }
 

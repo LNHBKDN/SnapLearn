@@ -56,6 +56,11 @@ public class MainActivity extends AppCompatActivity implements SetAdapter.SetCli
     private String uid;
 
     @Override
+    public void onBackPressed() {
+        moveTaskToBack(false);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -69,8 +74,7 @@ public class MainActivity extends AppCompatActivity implements SetAdapter.SetCli
                 int id = item.getItemId();
 
                 if (id == R.id.log_out) {
-                    // Log out user
-                    mAuth.signOut();
+//                    mAuth.signOut();
 
                     // Redirect to the login screen or wherever you want after logout
                     Intent intent = new Intent(MainActivity.this, Login.class);

@@ -58,8 +58,11 @@
             android:id="@+id/btn_create_set"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/ripple_button"
+            android:textColor="@color/white"
             android:layout_marginLeft="150dp"
-            android:text="Create Set"
+            android:text=" Create Set "
         />
         <TextView
             android:id="@+id/tv_term"

@@ -54,16 +54,14 @@
             <SearchView
                 android:id="@+id/main_Search"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginBottom="0dp"
                 android:iconifiedByDefault="false"
                 android:background="@drawable/rectangle_main_search"
-                android:queryHint="Search here"
                 android:fontFamily="@font/bebas_neue"
                 android:lines="1"
-                />
+                android:queryHint="Search here" />
 
         </LinearLayout>
 
@@ -75,6 +73,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_set"
+                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
     </LinearLayout>

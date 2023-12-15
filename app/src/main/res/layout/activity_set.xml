@@ -50,7 +50,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_marginBottom="15mm">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -70,7 +72,7 @@
             android:id="@+id/btn_flash_card"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/custom_background_button"
+            android:background="@drawable/ripple_button"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:text="Flashcards"
@@ -93,7 +95,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/custom_background_button"
+            android:background="@drawable/ripple_button"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:text="Practice"
@@ -115,7 +117,7 @@
             android:id="@+id/btn_write"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/custom_background_button"
+            android:background="@drawable/ripple_button"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:text="Exam"
@@ -136,7 +138,7 @@
             android:id="@+id/btn_update"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/custom_background_button"
+            android:background="@drawable/ripple_button"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:text="Update"

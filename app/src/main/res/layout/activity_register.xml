@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="15dp"
-    tools:context=".view.Register">
+    tools:context=".view.Register"
+    android:background="#dbe2e9">
 
     <TextView
         android:id="@+id/reg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30mm"
         android:gravity="center_horizontal"
         android:text="@string/register"
         android:textColor="#3B82F6"
@@ -83,8 +83,7 @@
         android:id="@+id/btn_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:backgroundTint="#3B82F6"
+        android:background="@drawable/ripple_button"
         android:outlineAmbientShadowColor="@color/white"
         android:text="@string/register"
         android:textColor="@color/white"

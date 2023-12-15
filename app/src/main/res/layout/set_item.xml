@@ -57,7 +57,7 @@
                 android:textStyle="bold"
                 android:textSize="18dp"
                 android:layout_marginTop="8dp"
-                android:paddingStart="10dp"
+                android:paddingStart="16dp"
                 android:textColor="#3B82F6"></TextView>
         </LinearLayout>
         <LinearLayout
@@ -73,7 +73,7 @@
                 android:textSize="20dp"
                 android:inputType="none"
                 android:focusable="false"
-                android:paddingStart="10dp"
+                android:paddingStart="16dp"
                 android:textColor="@color/black"
                 android:enabled="false"
                 android:fontFamily="@font/be_vietnam_pro_regular"></TextView>
@@ -88,7 +88,7 @@
                 android:text="Decription: "
                 android:textStyle="bold"
                 android:textSize="18dp"
-                android:paddingStart="10dp"
+                android:paddingStart="16dp"
                 android:textColor="#3B82F6"></TextView>
         </LinearLayout>
         <LinearLayout
@@ -103,7 +103,7 @@
                 android:textSize="20dp"
                 android:inputType="none"
                 android:focusable="false"
-                android:paddingStart="10dp"
+                android:paddingStart="16dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/be_vietnam_pro_regular"
                 ></TextView>

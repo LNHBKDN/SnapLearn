@@ -46,6 +46,18 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 String email = activityLoginBinding.email.getText().toString();
                 String password = activityLoginBinding.password.getText().toString();
+
+                if (TextUtils.isEmpty(email)) {
+//                Toast.makeText(Register.this, "Plz Enter Email?", Toast.LENGTH_SHORT).show();
+                    activityLoginBinding.email.setError("You must fill the email field");
+                    return;
+                }
+                if (TextUtils.isEmpty(password)) {
+                    //Toast.makeText(Register.this, "Plz Enter Password?", Toast.LENGTH_SHORT).show();
+                    activityLoginBinding.password.setError("You must fill the email field");
+                    return;
+                }
+
                 mAuth.signInWithEmailAndPassword(email,password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override

@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 import com.example.snaplearn.R;
 import com.example.snaplearn.databinding.ActivityPracticeBinding;
@@ -45,6 +46,12 @@ public class Write extends AppCompatActivity implements UpdateCardDialogFragment
         super.onCreate(savedInstanceState);
         binding = ActivityWriteBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        binding.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         window = getWindow();
         Intent getIntent = getIntent();
@@ -54,6 +61,23 @@ public class Write extends AppCompatActivity implements UpdateCardDialogFragment
         setsReference = database.getReference("users").child(uid).child("sets").child(IdSet);
         binding.rvExam.setLayoutManager(new LinearLayoutManager(Write.this,LinearLayoutManager.HORIZONTAL, false));
         fetchFlashCardsFromFirebase();
+        DatabaseReference nameset =database.getReference("users").child(uid).child("sets").child(IdSet).child("name");
+        nameset.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()) {
+                    String setName = dataSnapshot.getValue(String.class);
+                    binding.txtNameSet.setText(setName);
+                } else {
+                    binding.txtNameSet.setText("NULL");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Xử lý lỗi nếu cần thiết
+            }
+        });
         binding.btnCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

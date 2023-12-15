@@ -56,6 +56,11 @@ public class MainActivity extends AppCompatActivity implements SetAdapter.SetCli
     private String uid;
 
     @Override
+    public void onBackPressed() {
+        moveTaskToBack(false);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());

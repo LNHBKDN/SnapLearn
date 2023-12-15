@@ -19,7 +19,7 @@
             android:layout_height="60dp"
             android:layout_marginEnd="300dp"
             android:background="@android:color/transparent"
-            android:drawableStart="@drawable/baseline_chevron_left_24"
+            android:drawableStart="@drawable/baseline_arrow_back_24"
             android:fontFamily="sans-serif-black"
             android:paddingHorizontal="20dp"
             android:textAllCaps="false"

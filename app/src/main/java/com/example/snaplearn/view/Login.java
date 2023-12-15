@@ -2,6 +2,7 @@ package com.example.snaplearn.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +28,7 @@ public class Login extends AppCompatActivity {
     FirebaseAuth mAuth;
     ActivityLoginBinding activityLoginBinding;
     private String uid;
+    LoadingDialog loadingDialog = new LoadingDialog(Login.this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +37,8 @@ public class Login extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         setContentView(view);
-
         FirebaseUser currentUser = mAuth.getCurrentUser();
+
 
 
         activityLoginBinding.btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +51,15 @@ public class Login extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
+
+                                    loadingDialog.startLoadingDialog();
+//                                    Handler handler = new Handler();
+//                                    handler.postDelayed(new Runnable() {
+//                                        @Override
+//                                        public void run() {
+//                                            loadingDialog.closeLoadingDialog();
+//                                        }
+//                                    }, 2000);
                                     Intent intent = new Intent(Login.this, MainActivity.class);
                                     uid = currentUser.getUid();
                                     intent.putExtra("UID",uid);

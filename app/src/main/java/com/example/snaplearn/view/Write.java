@@ -92,7 +92,12 @@ public class Write extends AppCompatActivity implements UpdateCardDialogFragment
                 dialogFragment.show(getSupportFragmentManager(), "UpdateCardDialogFragment");
             }
         });
-
+        binding.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
     private void fetchFlashCardsFromFirebase() {
         listCardRef = database.getReference("users").child(uid).child("sets").child(IdSet).child("listCard");

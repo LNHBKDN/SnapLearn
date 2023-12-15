@@ -32,6 +32,8 @@ public class SetMethod extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference listCardRef;
     private DatabaseReference setsReference2;
+
+
     List<com.example.snaplearn.model.FlashCard> cardList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,24 @@ public class SetMethod extends AppCompatActivity {
         setID =getIntent.getStringExtra("idSet");
         database = FirebaseDatabase.getInstance();
         setsReference = database.getReference("users").child(uid).child("sets").child(setID);
+
+        DatabaseReference nameset =database.getReference("users").child(uid).child("sets").child(setID).child("name");
+        nameset.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()) {
+                    String setName = dataSnapshot.getValue(String.class);
+                    binding.txtView.setText(setName);
+                } else {
+                   binding.txtView.setText("NULL");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Xử lý lỗi nếu cần thiết
+            }
+        });
 //        uid = "4pPPfxZrs5YPIPF91wRi3EAC7t72";
 //        setID = "-NkQpHDCWrJEUtLwXO3G";
         binding.btnUpdate.setOnClickListener(new View.OnClickListener() {

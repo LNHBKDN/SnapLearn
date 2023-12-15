@@ -5,43 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.Write">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout4"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:background="#3B82F6"
-        android:gravity="center_vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="#3B82F6"
+            android:gravity="center_vertical">
+            <Button
+                android:id="@+id/btn_back"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="300dp"
+                android:drawableStart="@drawable/baseline_chevron_left_24"
+                android:background="@android:color/transparent"
+                android:fontFamily="sans-serif-black"
+                android:paddingHorizontal="20dp"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="0dp"/>
 
-        <Button
-            android:id="@+id/btn_back"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="300dp"
-            android:background="@drawable/button_background"
-            android:drawableStart="@drawable/baseline_chevron_left_24"
-            android:fontFamily="sans-serif-black"
-            android:paddingHorizontal="20dp"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="25dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="0dp">
-
-        <TextView
-            android:id="@+id/txtNameSet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/be_vietnam_pro_regular"
-            android:text="NAME"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
             <TextView
                 android:id="@+id/txtNameSet"
                 android:layout_width="wrap_content"
@@ -49,28 +40,20 @@
                 android:fontFamily="@font/be_vietnam_pro_regular"
                 android:text="NAME"
                 android:textColor="@color/white"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_exam"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="-1dp" />
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_exam"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout4"
             app:layout_constraintVertical_bias="0.0"
-            tools:layout_editor_absoluteX="1dp" />
+            tools:layout_editor_absoluteX="-1dp" />
     </LinearLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_check"

@@ -69,8 +69,7 @@ public class MainActivity extends AppCompatActivity implements SetAdapter.SetCli
                 int id = item.getItemId();
 
                 if (id == R.id.log_out) {
-                    // Log out user
-                    mAuth.signOut();
+//                    mAuth.signOut();
 
                     // Redirect to the login screen or wherever you want after logout
                     Intent intent = new Intent(MainActivity.this, Login.class);

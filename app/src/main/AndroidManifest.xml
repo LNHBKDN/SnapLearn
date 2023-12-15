@@ -16,29 +16,37 @@
         android:theme="@style/Theme.SnapLearn"
         tools:targetApi="31">
         <activity
+            android:screenOrientation="portrait"
             android:name=".view.UpdateCard"
             android:exported="false"
             android:label="@string/title_activity_update_card"
             android:theme="@style/Theme.SnapLearn" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".view.Write"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".view.Practice"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".view.FlashCard"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".view.SetMethod"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".view.CreateSet"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".view.MainActivity"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".view.SplashScreen"
             android:exported="true">
             <intent-filter>
@@ -47,9 +55,11 @@
             </intent-filter>
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".view.Register"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".view.Login"
             android:exported="true" />
     </application>
